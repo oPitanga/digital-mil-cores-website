@@ -1,20 +1,78 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
-const SiteHeader = () => (
-  <header className="border-b border-border">
-    <nav className="container flex items-center justify-between py-4" aria-label="Main navigation">
-      <Link to="/" className="font-display text-xl font-bold text-primary">
-        Digital Mil Cores
-      </Link>
-      <ul className="flex items-center gap-6 text-sm font-medium">
-        <li><Link to="/" className="text-foreground hover:text-accent transition-colors duration-100">Home</Link></li>
-        <li><Link to="/services" className="text-foreground hover:text-accent transition-colors duration-100">Services</Link></li>
-        <li><Link to="/knowledge" className="text-foreground hover:text-accent transition-colors duration-100">Knowledge Hub</Link></li>
-        <li><Link to="/faq" className="text-foreground hover:text-accent transition-colors duration-100">FAQ</Link></li>
-        <li><Link to="/contact" className="text-foreground hover:text-accent transition-colors duration-100">Contact</Link></li>
-      </ul>
-    </nav>
-  </header>
-);
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/services", label: "Services" },
+  { to: "/knowledge", label: "Knowledge Hub" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
+];
+
+const SiteHeader = () => {
+  const { pathname } = useLocation();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
+      <nav className="container flex items-center justify-between py-4" aria-label="Main navigation">
+        <Link to="/" className="font-display text-xl font-semibold tracking-wide text-primary">
+          Digital Mil Cores
+        </Link>
+
+        {/* Desktop */}
+        <ul className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
+          {links.map((l) => (
+            <li key={l.to}>
+              <Link
+                to={l.to}
+                className={`transition-colors duration-150 ${
+                  pathname === l.to
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-foreground"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-border/50 bg-background">
+          <ul className="container flex flex-col gap-4 py-6 text-sm font-medium tracking-wide uppercase">
+            {links.map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className={`block transition-colors duration-150 ${
+                    pathname === l.to
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </header>
+  );
+};
 
 export default SiteHeader;
