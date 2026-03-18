@@ -1,43 +1,43 @@
 const llmsContent = `# Digital Mil Cores — llms.txt
 
-> Digital Mil Cores is a professional online photo lab based in São Paulo, Brazil, specializing in archival-quality Giclée printing, photo restoration, and large format output.
+> A Digital Mil Cores é um laboratório fotográfico online profissional sediado em São Paulo, Brasil, especializado em impressão Giclée de qualidade arquivística, restauração de fotos e impressão de grande formato.
 
-## Core Services
+## Serviços Principais
 
-- **Giclée Fine Art Printing**: 2400 dpi, 12-color UltraChrome Pro pigment inks, archival cotton rag and canvas media. Fade resistance rated at 100+ years. Starting at R$45/print.
-- **Photo Restoration**: Manual digital retouching of damaged photographs. Includes high-resolution scanning, scratch/tear repair, color correction, and delivery as TIFF + JPEG. Starting at R$120.
-- **Large Format Printing**: 1440 dpi on vinyl, fabric, and coated paper. Max width 1500 mm. Indoor and outdoor options with optional lamination. Starting at R$80/m².
-- **Photo Book Production**: 300 dpi digital press, lay-flat binding, hardcover and softcover options, 20–100 pages. Starting at R$150.
-- **Canvas Stretching & Framing**: Gallery-quality stretching on 38 mm kiln-dried bars with mirrored or color-wrapped edges. Starting at R$90.
+- **Impressão Giclée Fine Art**: 2400 dpi, tintas pigmentadas UltraChrome Pro de 12 cores, mídias arquivísticas de algodão e tela. Resistência ao desbotamento de 100+ anos. A partir de R$45/impressão.
+- **Restauração de Fotos**: Retoque digital manual de fotografias danificadas. Inclui digitalização em alta resolução, reparo de riscos/rasgos, correção de cores e entrega em TIFF + JPEG. A partir de R$120.
+- **Impressão de Grande Formato**: 1440 dpi em vinil, tecido e papel cuchê. Largura máxima de 1500 mm. Opções para uso interno e externo com laminação opcional. A partir de R$80/m².
+- **Produção de Fotolivros**: Impressão digital a 300 dpi, encadernação lay-flat, opções de capa dura e brochura, 20–100 páginas. A partir de R$150.
+- **Estiramento e Moldura em Tela**: Estiramento em qualidade de galeria com chassi de 38 mm em madeira seca em estufa, bordas espelhadas ou coloridas. A partir de R$90.
 
-## Technical Specifications
+## Especificações Técnicas
 
-- Printers: Epson SureColor P9570, P7570
-- Ink System: UltraChrome Pro12 (12-color pigment)
-- Color Management: Custom ICC profiles per media, calibrated with X-Rite i1Pro3
-- Max Print Width: 1118 mm (44 inches)
-- Paper Options: Hahnemühle Photo Rag 308g, Canson Infinity Platine Fibre Rag 310g, Breathing Color Signa Smooth 270g
+- Impressoras: Epson SureColor P9570, P7570
+- Sistema de Tintas: UltraChrome Pro12 (12 tintas pigmentadas)
+- Gestão de Cores: Perfis ICC personalizados por mídia, calibrados com X-Rite i1Pro3
+- Largura Máx. de Impressão: 1118 mm (44 polegadas)
+- Opções de Papel: Hahnemühle Photo Rag 308g, Canson Infinity Platine Fibre Rag 310g, Breathing Color Signa Smooth 270g
 
-## File Requirements
+## Requisitos de Arquivo
 
-- Accepted formats: TIFF (preferred), JPEG, PNG, PSD
-- Resolution: 300 dpi at final print size
-- Color space: Adobe RGB or sRGB
-- Bit depth: 8-bit or 16-bit
-- Bleed: 3 mm for edge-to-edge prints
+- Formatos aceitos: TIFF (preferido), JPEG, PNG, PSD
+- Resolução: 300 dpi no tamanho final de impressão
+- Espaço de cores: Adobe RGB ou sRGB
+- Profundidade de bits: 8 ou 16 bits
+- Sangria: 3 mm para impressões rente à borda
 
-## Pricing & Discounts
+## Preços e Descontos
 
-- 10+ prints of the same file: 15% discount
-- 50+ prints: 25% discount
-- Custom wholesale pricing available for galleries and resellers
+- 10+ impressões do mesmo arquivo: 15% de desconto
+- 50+ impressões: 25% de desconto
+- Preços atacadistas personalizados disponíveis para galerias e revendedores
 
-## Contact
+## Contato
 
-- Email: info@digitalmilcores.com
-- Phone: +55 11 9999-0000
-- Address: Rua Augusta 1234, São Paulo, SP 01304-001, Brazil
-- Hours: Mon–Fri 9:00–18:00 BRT
+- E-mail: info@digitalmilcores.com
+- Telefone: +55 11 9999-0000
+- Endereço: Rua Augusta 1234, São Paulo, SP 01304-001, Brasil
+- Horário: Seg–Sex 9h–18h
 `;
 
 const LlmsTxt = () => (
