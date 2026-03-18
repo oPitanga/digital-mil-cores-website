@@ -10,11 +10,11 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
+  name: z.string().trim().min(1, "Nome é obrigatório").max(100),
+  email: z.string().trim().email("Endereço de e-mail inválido").max(255),
   phone: z.string().trim().max(20).optional(),
-  subject: z.string().trim().min(1, "Subject is required").max(200),
-  message: z.string().trim().min(1, "Message is required").max(2000),
+  subject: z.string().trim().min(1, "Assunto é obrigatório").max(200),
+  message: z.string().trim().min(1, "Mensagem é obrigatória").max(2000),
 });
 
 const ContactPage = () => {
@@ -33,7 +33,7 @@ const ContactPage = () => {
       return;
     }
     setErrors({});
-    toast.success("Message sent successfully. We'll respond within 1 business day.");
+    toast.success("Mensagem enviada com sucesso. Responderemos em até 1 dia útil.");
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
@@ -45,48 +45,57 @@ const ContactPage = () => {
       <SiteHeader />
       <main className="container max-w-xl py-12">
         <article>
-          <h1 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">Fale Conosco</h1>
           <SummaryBlock>
-            Reach Digital Mil Cores for quotes, technical questions, or partnership inquiries.
-            Response time is within 1 business day. Phone support available Mon–Fri 9:00–18:00 BRT.
+            Entre em contato com a Digital Mil Cores para orçamentos, dúvidas técnicas ou parcerias.
+            O tempo de resposta é de até 1 dia útil. Atendimento telefônico disponível de segunda a sexta, das 9h às 18h.
           </SummaryBlock>
 
           <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             <div>
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">Nome Completo</Label>
               <Input id="name" name="name" autoComplete="name" value={form.name} onChange={update("name")} />
               {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
             </div>
             <div>
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">Endereço de E-mail</Label>
               <Input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={update("email")} />
               {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
             </div>
             <div>
-              <Label htmlFor="phone">Phone (optional)</Label>
+              <Label htmlFor="phone">Telefone (opcional)</Label>
               <Input id="phone" name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={update("phone")} />
             </div>
             <div>
-              <Label htmlFor="subject">Subject</Label>
+              <Label htmlFor="subject">Assunto</Label>
               <Input id="subject" name="subject" value={form.subject} onChange={update("subject")} />
               {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
             </div>
             <div>
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">Mensagem</Label>
               <Textarea id="message" name="message" rows={5} value={form.message} onChange={update("message")} />
               {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
             </div>
-            <Button type="submit" className="bg-accent text-accent-foreground hover:opacity-90">
-              Send Message
+            <Button type="submit">
+              Enviar Mensagem
             </Button>
           </form>
 
           <section aria-labelledby="contact-info" className="mt-12">
-            <h2 id="contact-info" className="text-2xl font-semibold mb-4">Other Ways to Reach Us</h2>
-            <ul className="space-y-2 text-foreground list-disc list-inside">
-              <li><strong>Email:</strong> info@digitalmilcores.com</li>
-              <li><strong>Phone:</strong> +55 11 9999-0000 (Mon–Fri 9:00–18:00 BRT)</li>
-              <li><strong>Address:</strong> Rua Augusta 1234, São Paulo, SP 01304-001, Brazil</li>
+            <h2 id="contact-info" className="text-2xl font-semibold mb-4">Outras Formas de Contato</h2>
+            <ul className="space-y-3 text-foreground">
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
+                <span><strong className="text-primary/80">E-mail:</strong> info@digitalmilcores.com</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
+                <span><strong className="text-primary/80">Telefone:</strong> +55 11 9999-0000 (Seg–Sex 9h–18h)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
+                <span><strong className="text-primary/80">Endereço:</strong> Rua Augusta 1234, São Paulo, SP 01304-001, Brasil</span>
+              </li>
             </ul>
           </section>
         </article>

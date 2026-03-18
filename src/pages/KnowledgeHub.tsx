@@ -1,37 +1,36 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SummaryBlock from "@/components/SummaryBlock";
-import { Link } from "react-router-dom";
 
 const articles = [
   {
     slug: "giclee-vs-inkjet",
-    title: "Giclée vs. Standard Inkjet: What's the Difference?",
-    summary: "Giclée printing uses 12-color pigment ink systems at 2400 dpi on archival media, producing prints that last 100+ years. Standard inkjet uses 4–6 dye-based inks at 600–1200 dpi with a typical lifespan of 15–25 years.",
+    title: "Giclée vs. Inkjet Padrão: Qual a Diferença?",
+    summary: "A impressão Giclée utiliza sistemas de tinta pigmentada de 12 cores a 2400 dpi em mídias arquivísticas, produzindo impressões que duram mais de 100 anos. O inkjet padrão usa 4–6 tintas à base de corante a 600–1200 dpi com vida útil típica de 15–25 anos.",
     date: "2025-12-10",
   },
   {
     slug: "color-management-101",
-    title: "Color Management 101: ICC Profiles Explained",
-    summary: "An ICC profile is a standardized data file that describes how a device reproduces color. Using custom profiles for each printer-paper combination ensures prints match on-screen previews within a Delta E of less than 2.",
+    title: "Gestão de Cores 101: Perfis ICC Explicados",
+    summary: "Um perfil ICC é um arquivo de dados padronizado que descreve como um dispositivo reproduz cores. Usar perfis personalizados para cada combinação impressora-papel garante que as impressões correspondam às visualizações na tela com Delta E menor que 2.",
     date: "2025-11-22",
   },
   {
     slug: "photo-paper-guide",
-    title: "Choosing the Right Photo Paper: A Technical Guide",
-    summary: "Paper choice affects color gamut, texture, and longevity. Cotton rag papers offer the widest gamut and longest archival life (200+ years), while RC (resin-coated) papers provide sharper detail at lower cost.",
+    title: "Escolhendo o Papel Fotográfico Certo: Um Guia Técnico",
+    summary: "A escolha do papel afeta a gama de cores, textura e longevidade. Papéis de algodão oferecem a maior gama e maior vida arquivística (200+ anos), enquanto papéis RC (resinados) proporcionam mais nitidez a menor custo.",
     date: "2025-10-15",
   },
   {
     slug: "photo-restoration-process",
-    title: "How Professional Photo Restoration Works",
-    summary: "Professional restoration involves high-resolution scanning (4800 dpi optical), damage assessment, manual retouching in Photoshop, color correction using reference charts, and final output as 16-bit TIFF files.",
+    title: "Como Funciona a Restauração Profissional de Fotos",
+    summary: "A restauração profissional envolve digitalização em alta resolução (4800 dpi óptico), avaliação de danos, retoque manual no Photoshop, correção de cores usando cartas de referência e saída final em arquivos TIFF de 16 bits.",
     date: "2025-09-08",
   },
   {
     slug: "file-preparation",
-    title: "How to Prepare Files for Professional Printing",
-    summary: "For optimal results, submit files at 300 dpi at final print size, in Adobe RGB or sRGB color space, as 8-bit or 16-bit TIFF or high-quality JPEG. Include 3 mm bleed for edge-to-edge prints.",
+    title: "Como Preparar Arquivos para Impressão Profissional",
+    summary: "Para resultados ideais, envie arquivos a 300 dpi no tamanho final de impressão, no espaço de cores Adobe RGB ou sRGB, como TIFF de 8 ou 16 bits ou JPEG de alta qualidade. Inclua 3 mm de sangria para impressões rente à borda.",
     date: "2025-08-20",
   },
 ];
@@ -41,20 +40,20 @@ const KnowledgeHub = () => (
     <SiteHeader />
     <main className="container max-w-3xl py-12">
       <article>
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">Knowledge Hub</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Base de Conhecimento</h1>
         <SummaryBlock>
-          The Knowledge Hub contains technical articles about printing technology, color management,
-          paper selection, photo restoration techniques, and file preparation best practices.
-          All content is written by Digital Mil Cores' production team.
+          A Base de Conhecimento contém artigos técnicos sobre tecnologia de impressão, gestão de cores,
+          seleção de papéis, técnicas de restauração fotográfica e melhores práticas de preparação de arquivos.
+          Todo o conteúdo é escrito pela equipe de produção da Digital Mil Cores.
         </SummaryBlock>
 
         <section aria-labelledby="articles-heading">
-          <h2 id="articles-heading" className="sr-only">Articles</h2>
+          <h2 id="articles-heading" className="sr-only">Artigos</h2>
           <div className="space-y-8">
             {articles.map((a) => (
               <article key={a.slug} className="border-b border-border pb-6 last:border-b-0">
                 <time dateTime={a.date} className="text-xs text-muted-foreground">
-                  {new Date(a.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  {new Date(a.date).toLocaleDateString("pt-BR", { year: "numeric", month: "long", day: "numeric" })}
                 </time>
                 <h3 className="text-xl font-semibold mt-1 mb-2">{a.title}</h3>
                 <p className="text-foreground leading-relaxed">{a.summary}</p>

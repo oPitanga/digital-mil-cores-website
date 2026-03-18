@@ -12,49 +12,49 @@ import serviceCanvas from "@/assets/service-canvas.jpg";
 
 const services = [
   {
-    name: "Giclée Fine Art Printing",
+    name: "Impressão Giclée Fine Art",
     image: serviceGiclee,
-    imageAlt: "Giclée print on textured cotton rag paper in our lab",
-    description: "Museum-quality inkjet printing on cotton rag and canvas using 12-color UltraChrome Pro pigment inks at 2400 dpi. Suitable for fine art reproduction, photography exhibitions, and archival collections.",
-    specs: ["2400 dpi resolution", "Max width 1118 mm", "100+ year fade resistance", "Custom ICC profiling"],
+    imageAlt: "Impressão Giclée em papel de algodão texturizado em nosso laboratório",
+    description: "Impressão inkjet de qualidade museológica em algodão e tela usando tintas pigmentadas UltraChrome Pro de 12 cores a 2400 dpi. Ideal para reprodução de arte, exposições fotográficas e coleções de arquivo.",
+    specs: ["Resolução de 2400 dpi", "Largura máxima de 1118 mm", "Resistência ao desbotamento de 100+ anos", "Perfil ICC personalizado"],
     media: ["Hahnemühle Photo Rag 308g", "Canson Infinity Platine Fibre Rag 310g", "Breathing Color Signa Smooth 270g", "Epson Premium Canvas Satin"],
-    price: "From R$45/print",
+    price: "A partir de R$45",
   },
   {
-    name: "Photo Restoration",
+    name: "Restauração de Fotos",
     image: serviceRestoration,
-    imageAlt: "Before and after photo restoration on a professional monitor",
-    description: "Professional digital restoration of damaged, faded, or deteriorated photographs. Services include scratch and tear repair, color correction, stain removal, and reconstruction of missing areas.",
-    specs: ["Manual retouching by trained artists", "Before/after comparison provided", "High-resolution scan included", "Delivered as TIFF + JPEG"],
+    imageAlt: "Antes e depois de restauração de foto em monitor profissional",
+    description: "Restauração digital profissional de fotografias danificadas, desbotadas ou deterioradas. Os serviços incluem reparo de riscos e rasgos, correção de cores, remoção de manchas e reconstrução de áreas faltantes.",
+    specs: ["Retoque manual por artistas treinados", "Comparação antes/depois fornecida", "Digitalização em alta resolução inclusa", "Entrega em TIFF + JPEG"],
     media: [],
-    price: "From R$120",
+    price: "A partir de R$120",
   },
   {
-    name: "Large Format Printing",
+    name: "Impressão de Grande Formato",
     image: serviceLargeformat,
-    imageAlt: "Wide format printer producing a vibrant large print",
-    description: "High-impact prints for events, retail displays, and signage. Available on vinyl, fabric, and coated paper up to 1.5 m wide.",
-    specs: ["1440 dpi resolution", "Max width 1500 mm", "Indoor and outdoor options", "Lamination available"],
-    media: ["Self-adhesive vinyl", "PVC banner", "Polyester fabric", "Coated paper 180g"],
-    price: "From R$80/m²",
+    imageAlt: "Impressora de grande formato produzindo uma impressão vibrante",
+    description: "Impressões de alto impacto para eventos, displays de varejo e sinalização. Disponível em vinil, tecido e papel cuchê com até 1,5 m de largura.",
+    specs: ["Resolução de 1440 dpi", "Largura máxima de 1500 mm", "Opções para uso interno e externo", "Laminação disponível"],
+    media: ["Vinil autoadesivo", "Banner em PVC", "Tecido poliéster", "Papel cuchê 180g"],
+    price: "A partir de R$80/m²",
   },
   {
-    name: "Photo Book Production",
+    name: "Produção de Fotolivros",
     image: servicePhotobook,
-    imageAlt: "Open premium photo book showing wedding photography",
-    description: "Custom photo books with lay-flat binding and premium paper. Ideal for weddings, portfolios, and family albums. Available in hardcover and softcover formats.",
-    specs: ["300 dpi digital press", "Lay-flat binding", "Sizes from 20×20 cm to 30×40 cm", "20–100 pages"],
-    media: ["Silk-coated 200g", "Matte art 170g", "Lustre photo paper 250g"],
-    price: "From R$150",
+    imageAlt: "Fotolivro premium aberto mostrando fotografia de casamento",
+    description: "Fotolivros personalizados com encadernação lay-flat e papel premium. Ideal para casamentos, portfólios e álbuns de família. Disponível em capa dura e brochura.",
+    specs: ["Impressão digital a 300 dpi", "Encadernação lay-flat", "Tamanhos de 20×20 cm a 30×40 cm", "20–100 páginas"],
+    media: ["Papel cuchê silk 200g", "Papel fosco artístico 170g", "Papel fotográfico lustre 250g"],
+    price: "A partir de R$150",
   },
   {
-    name: "Canvas Stretching & Framing",
+    name: "Estiramento e Moldura em Tela",
     image: serviceCanvas,
-    imageAlt: "Canvas print being stretched on wooden frame in workshop",
-    description: "Gallery-quality canvas stretching on kiln-dried wooden bars. Optional custom framing with a curated selection of mouldings.",
-    specs: ["38 mm gallery wrap bars", "Mirrored or color-wrapped edges", "Hardware included", "Custom sizes available"],
+    imageAlt: "Impressão em tela sendo esticada em chassi de madeira na oficina",
+    description: "Estiramento de tela em qualidade de galeria com chassi de madeira seca em estufa. Moldura personalizada opcional com uma seleção curada de perfis.",
+    specs: ["Chassi gallery wrap de 38 mm", "Bordas espelhadas ou coloridas", "Ferragens inclusas", "Tamanhos personalizados disponíveis"],
     media: [],
-    price: "From R$90",
+    price: "A partir de R$90",
   },
 ];
 
@@ -64,19 +64,19 @@ const ServicesPage = () => (
       type="Service"
       data={{
         provider: { "@type": "Organization", name: "Digital Mil Cores" },
-        serviceType: "Photo Printing and Restoration",
+        serviceType: "Impressão Fotográfica e Restauração",
         areaServed: "Brazil",
-        description: "Professional Giclée printing, photo restoration, large format printing, photo book production, and canvas framing services.",
+        description: "Serviços profissionais de impressão Giclée, restauração de fotos, impressão de grande formato, produção de fotolivros e emolduramento em tela.",
       }}
     />
     <SiteHeader />
     <main className="container max-w-4xl py-16">
       <article>
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">Services</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Serviços</h1>
         <SummaryBlock>
-          Digital Mil Cores offers five core services: Giclée fine art printing (2400 dpi), photo restoration,
-          large format printing, photo book production, and canvas stretching with framing. All services use
-          archival-grade materials and professional color management.
+          A Digital Mil Cores oferece cinco serviços principais: impressão Giclée fine art (2400 dpi), restauração de fotos,
+          impressão de grande formato, produção de fotolivros e estiramento em tela com moldura. Todos os serviços utilizam
+          materiais de qualidade arquivística e gestão profissional de cores.
         </SummaryBlock>
 
         {services.map((service, i) => (
@@ -95,7 +95,7 @@ const ServicesPage = () => (
                 <Badge variant="secondary" className="mb-3 text-xs">{service.price}</Badge>
                 <p className="text-foreground mb-5 leading-relaxed">{service.description}</p>
 
-                <h3 className="text-sm font-semibold text-primary/70 uppercase tracking-wider mb-2">Specifications</h3>
+                <h3 className="text-sm font-semibold text-primary/70 uppercase tracking-wider mb-2">Especificações</h3>
                 <ul className="space-y-1.5 text-foreground text-sm mb-4">
                   {service.specs.map((s) => (
                     <li key={s} className="flex items-start gap-2">
@@ -107,7 +107,7 @@ const ServicesPage = () => (
 
                 {service.media.length > 0 && (
                   <>
-                    <h3 className="text-sm font-semibold text-primary/70 uppercase tracking-wider mb-2">Available Media</h3>
+                    <h3 className="text-sm font-semibold text-primary/70 uppercase tracking-wider mb-2">Mídias Disponíveis</h3>
                     <ul className="space-y-1.5 text-foreground text-sm">
                       {service.media.map((m) => (
                         <li key={m} className="flex items-start gap-2">
@@ -124,23 +124,23 @@ const ServicesPage = () => (
         ))}
 
         <section aria-labelledby="comparison" className="mb-12">
-          <h2 id="comparison" className="text-2xl font-semibold mb-5">Service Comparison</h2>
+          <h2 id="comparison" className="text-2xl font-semibold mb-5">Comparação de Serviços</h2>
           <div className="overflow-x-auto rounded-md border border-border/50">
             <Table>
               <TableHeader>
                 <TableRow className="border-border/50">
-                  <TableHead className="text-primary/70">Service</TableHead>
-                  <TableHead className="text-primary/70">Best For</TableHead>
-                  <TableHead className="text-primary/70">Turnaround</TableHead>
-                  <TableHead className="text-primary/70">Price</TableHead>
+                  <TableHead className="text-primary/70">Serviço</TableHead>
+                  <TableHead className="text-primary/70">Ideal Para</TableHead>
+                  <TableHead className="text-primary/70">Prazo</TableHead>
+                  <TableHead className="text-primary/70">Preço</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow className="border-border/50"><TableCell className="font-medium">Giclée Printing</TableCell><TableCell className="text-muted-foreground">Fine art, exhibitions</TableCell><TableCell className="text-muted-foreground">3–5 days</TableCell><TableCell className="font-medium">From R$45</TableCell></TableRow>
-                <TableRow className="border-border/50"><TableCell className="font-medium">Photo Restoration</TableCell><TableCell className="text-muted-foreground">Damaged photos</TableCell><TableCell className="text-muted-foreground">5–7 days</TableCell><TableCell className="font-medium">From R$120</TableCell></TableRow>
-                <TableRow className="border-border/50"><TableCell className="font-medium">Large Format</TableCell><TableCell className="text-muted-foreground">Events, signage</TableCell><TableCell className="text-muted-foreground">2–4 days</TableCell><TableCell className="font-medium">From R$80/m²</TableCell></TableRow>
-                <TableRow className="border-border/50"><TableCell className="font-medium">Photo Books</TableCell><TableCell className="text-muted-foreground">Weddings, portfolios</TableCell><TableCell className="text-muted-foreground">7–10 days</TableCell><TableCell className="font-medium">From R$150</TableCell></TableRow>
-                <TableRow className="border-border/50"><TableCell className="font-medium">Canvas & Framing</TableCell><TableCell className="text-muted-foreground">Home décor, galleries</TableCell><TableCell className="text-muted-foreground">5–7 days</TableCell><TableCell className="font-medium">From R$90</TableCell></TableRow>
+                <TableRow className="border-border/50"><TableCell className="font-medium">Impressão Giclée</TableCell><TableCell className="text-muted-foreground">Arte, exposições</TableCell><TableCell className="text-muted-foreground">3–5 dias</TableCell><TableCell className="font-medium">A partir de R$45</TableCell></TableRow>
+                <TableRow className="border-border/50"><TableCell className="font-medium">Restauração de Fotos</TableCell><TableCell className="text-muted-foreground">Fotos danificadas</TableCell><TableCell className="text-muted-foreground">5–7 dias</TableCell><TableCell className="font-medium">A partir de R$120</TableCell></TableRow>
+                <TableRow className="border-border/50"><TableCell className="font-medium">Grande Formato</TableCell><TableCell className="text-muted-foreground">Eventos, sinalização</TableCell><TableCell className="text-muted-foreground">2–4 dias</TableCell><TableCell className="font-medium">A partir de R$80/m²</TableCell></TableRow>
+                <TableRow className="border-border/50"><TableCell className="font-medium">Fotolivros</TableCell><TableCell className="text-muted-foreground">Casamentos, portfólios</TableCell><TableCell className="text-muted-foreground">7–10 dias</TableCell><TableCell className="font-medium">A partir de R$150</TableCell></TableRow>
+                <TableRow className="border-border/50"><TableCell className="font-medium">Tela e Moldura</TableCell><TableCell className="text-muted-foreground">Decoração, galerias</TableCell><TableCell className="text-muted-foreground">5–7 dias</TableCell><TableCell className="font-medium">A partir de R$90</TableCell></TableRow>
               </TableBody>
             </Table>
           </div>

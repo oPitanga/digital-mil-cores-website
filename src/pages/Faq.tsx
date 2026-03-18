@@ -4,14 +4,14 @@ import SummaryBlock from "@/components/SummaryBlock";
 import JsonLd from "@/components/JsonLd";
 
 const faqs = [
-  { q: "What is Giclée printing?", a: "Giclée is a high-fidelity inkjet printing process that uses 12-color pigment inks at 2400 dpi on archival-grade media such as cotton rag and canvas. The term comes from the French word 'gicler' (to spray). Giclée prints are rated for 100+ years of fade resistance under museum lighting conditions." },
-  { q: "What file formats do you accept?", a: "We accept TIFF (preferred), JPEG, PNG, and PSD files. For best results, submit files at 300 dpi at the final print size in Adobe RGB or sRGB color space. 16-bit files are accepted and recommended for fine art reproduction." },
-  { q: "How long does shipping take?", a: "Standard shipping within São Paulo takes 1–2 business days. Nationwide delivery across Brazil takes 3–7 business days depending on location. All prints are shipped in rigid tubes or flat mailers with protective interleaving." },
-  { q: "Do you offer color proofing?", a: "Yes. We offer soft proofing (digital PDF proof with simulated output) included with every order, and hard proofing (physical proof print on the selected media) for an additional R$35. Hard proofs are recommended for edition runs and exhibitions." },
-  { q: "What is your return policy?", a: "If a print has a manufacturing defect (banding, color shift, media damage), we will reprint at no charge or issue a full refund. Claims must be submitted within 7 days of delivery with photographic evidence of the defect." },
-  { q: "Can you match Pantone or spot colors?", a: "We can achieve close matches to Pantone colors within the gamut of our pigment ink set. For critical color matching, we recommend ordering a hard proof first. We provide a gamut comparison report upon request." },
-  { q: "Do you offer bulk or wholesale pricing?", a: "Yes. Orders of 10+ prints of the same file receive a 15% discount. Orders of 50+ prints receive a 25% discount. Contact us for custom wholesale pricing for galleries, studios, and resellers." },
-  { q: "What is the maximum print size?", a: "Our maximum print width is 1118 mm (44 inches). For roll media, there is no length limit — we have produced panoramic prints exceeding 5 meters. Sheet-fed media is available up to 1118 × 1626 mm." },
+  { q: "O que é impressão Giclée?", a: "Giclée é um processo de impressão inkjet de alta fidelidade que utiliza tintas pigmentadas de 12 cores a 2400 dpi em mídias de qualidade arquivística, como algodão e tela. O termo vem da palavra francesa 'gicler' (pulverizar). As impressões Giclée possuem durabilidade de mais de 100 anos contra desbotamento sob condições de iluminação de museu." },
+  { q: "Quais formatos de arquivo vocês aceitam?", a: "Aceitamos TIFF (preferido), JPEG, PNG e PSD. Para melhores resultados, envie arquivos a 300 dpi no tamanho final de impressão, no espaço de cores Adobe RGB ou sRGB. Arquivos de 16 bits são aceitos e recomendados para reprodução de fine art." },
+  { q: "Qual o prazo de entrega?", a: "O envio padrão dentro de São Paulo leva 1–2 dias úteis. Entregas em todo o Brasil levam de 3 a 7 dias úteis, dependendo da localização. Todas as impressões são enviadas em tubos rígidos ou envelopes planos com proteção." },
+  { q: "Vocês oferecem prova de cor?", a: "Sim. Oferecemos prova digital (PDF com simulação de saída) inclusa em cada pedido, e prova física (impressão na mídia selecionada) por um adicional de R$35. Provas físicas são recomendadas para tiragens de edição e exposições." },
+  { q: "Qual é a política de devolução?", a: "Se uma impressão apresentar defeito de fabricação (bandas, desvio de cor, dano na mídia), reimprimimos sem custo ou emitimos reembolso integral. Reclamações devem ser enviadas em até 7 dias após a entrega com evidência fotográfica do defeito." },
+  { q: "Vocês conseguem reproduzir cores Pantone?", a: "Conseguimos aproximar cores Pantone dentro da gama do nosso sistema de tintas pigmentadas. Para correspondência crítica de cores, recomendamos solicitar uma prova física primeiro. Fornecemos um relatório de comparação de gamut mediante solicitação." },
+  { q: "Vocês oferecem preços para grandes quantidades?", a: "Sim. Pedidos de 10+ impressões do mesmo arquivo recebem 15% de desconto. Pedidos de 50+ impressões recebem 25% de desconto. Entre em contato para preços atacadistas personalizados para galerias, estúdios e revendedores." },
+  { q: "Qual é o tamanho máximo de impressão?", a: "Nossa largura máxima de impressão é de 1118 mm (44 polegadas). Para mídia em rolo, não há limite de comprimento — já produzimos impressões panorâmicas de mais de 5 metros. Mídia em folha está disponível até 1118 × 1626 mm." },
 ];
 
 const FaqPage = () => (
@@ -29,15 +29,15 @@ const FaqPage = () => (
     <SiteHeader />
     <main className="container max-w-3xl py-12">
       <article>
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">Frequently Asked Questions</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Perguntas Frequentes</h1>
         <SummaryBlock>
-          Answers to the most common questions about Digital Mil Cores' printing services, file requirements,
-          shipping, color proofing, return policy, and bulk pricing. All technical specifications are current
-          as of January 2026.
+          Respostas para as perguntas mais comuns sobre os serviços de impressão da Digital Mil Cores, requisitos de arquivo,
+          envio, prova de cor, política de devolução e preços para grandes quantidades. Todas as especificações técnicas estão
+          atualizadas até janeiro de 2026.
         </SummaryBlock>
 
         <section aria-labelledby="faq-list">
-          <h2 id="faq-list" className="sr-only">Questions and Answers</h2>
+          <h2 id="faq-list" className="sr-only">Perguntas e Respostas</h2>
           <dl className="space-y-8">
             {faqs.map((f, i) => (
               <div key={i}>
