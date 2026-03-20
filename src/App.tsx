@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/llms.txt" element={<LlmsTxt />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
