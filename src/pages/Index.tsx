@@ -5,8 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Link } from "react-router-dom";
-import { Camera, Printer, Image, BookOpen, Frame } from "lucide-react";
-import heroImg from "@/assets/hero-lab.jpg";
+import { Camera, Printer, Image, BookOpen, Frame, Star, Shield, Clock } from "lucide-react";
 
 const services = [
   { name: "Impressão Giclée Fine Art", resolution: "2400 dpi", media: "Algodão, Tela", turnaround: "3–5 dias úteis", price: "A partir de R$45" },
@@ -17,11 +16,17 @@ const services = [
 ];
 
 const highlights = [
-  { icon: Printer, label: "Giclée 2400 dpi", desc: "Algodão e tela com qualidade de museu" },
-  { icon: Camera, label: "Restauração de Fotos", desc: "Reparos de riscos, desbotamento e danos" },
-  { icon: Image, label: "Grande Formato", desc: "Até 1,5m de largura em vinil e tecido" },
-  { icon: BookOpen, label: "Fotolivros", desc: "Encadernação lay-flat, papel premium" },
-  { icon: Frame, label: "Tela e Moldura", desc: "Gallery wrap em chassi de madeira seca" },
+  { icon: Printer, label: "Giclée 2400 dpi", desc: "Algodão e tela com qualidade de museu", color: "bg-orange-100 text-orange-600" },
+  { icon: Camera, label: "Restauração de Fotos", desc: "Reparos de riscos, desbotamento e danos", color: "bg-sky-100 text-sky-600" },
+  { icon: Image, label: "Grande Formato", desc: "Até 1,5m de largura em vinil e tecido", color: "bg-green-100 text-green-600" },
+  { icon: BookOpen, label: "Fotolivros", desc: "Encadernação lay-flat, papel premium", color: "bg-purple-100 text-purple-600" },
+  { icon: Frame, label: "Tela e Moldura", desc: "Gallery wrap em chassi de madeira seca", color: "bg-yellow-100 text-yellow-600" },
+];
+
+const trustBadges = [
+  { icon: Star, text: "Mais de 15 anos de experiência" },
+  { icon: Shield, text: "Materiais arquivísticos 100+" },
+  { icon: Clock, text: "Entrega rápida para todo Brasil" },
 ];
 
 const Index = () => (
@@ -42,64 +47,72 @@ const Index = () => (
         },
       }}
     />
-    <JsonLd
-      type="WebSite"
-      data={{
-        name: "Digital Mil Cores",
-        url: "https://digitalmilcores.com",
-      }}
-    />
+    <JsonLd type="WebSite" data={{ name: "Digital Mil Cores", url: "https://digitalmilcores.com" }} />
     <SiteHeader />
 
     <main>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt="Impressão fine art profissional sendo inspecionada em nosso laboratório em São Paulo"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
-        </div>
-        <div className="container relative py-24 md:py-36 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/80 mb-4">
-            O Principal Laboratório Fotográfico de São Paulo
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
-            Impressão com Qualidade Arquivística para Artistas e Fotógrafos
-          </h1>
-          <p className="text-lg text-foreground/80 max-w-xl mb-8 leading-relaxed">
-            Impressão Giclée a 2400 dpi em mídias de qualidade museológica. Tintas pigmentadas com durabilidade de mais de 100 anos.
-            Do arquivo à moldura — tudo sob o mesmo teto.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center rounded-sm bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-150 hover:opacity-90"
-            >
-              Solicitar Orçamento
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center justify-center rounded-sm border border-primary/30 text-primary px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-150 hover:bg-primary/10"
-            >
-              Nossos Serviços
-            </Link>
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-background to-sky-50 border-b border-orange-100">
+        <div className="container relative py-20 md:py-32">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-bold text-primary shadow-sm border border-orange-100 mb-6">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              O Principal Laboratório Fotográfico de São Paulo
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+              Preserve suas memórias com{" "}
+              <span className="text-primary">qualidade para a família</span>
+            </h1>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed font-medium">
+              Impressão Giclée a 2400 dpi em mídias de qualidade museológica. Tintas pigmentadas com durabilidade de mais de 100 anos.
+              Perfeito para álbuns de família, fotos de casamento e recordações especiais.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-primary text-white px-8 py-3.5 text-sm font-bold shadow-md transition-all duration-150 hover:bg-primary/90 hover:shadow-lg"
+              >
+                🎨 Solicitar Orçamento
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center rounded-full border-2 border-primary/30 text-primary bg-white px-8 py-3.5 text-sm font-bold transition-all duration-150 hover:bg-secondary"
+              >
+                Ver Nossos Serviços →
+              </Link>
+            </div>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-4 mt-8">
+              {trustBadges.map((b) => (
+                <div key={b.text} className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
+                  <b.icon className="h-4 w-4 text-primary" />
+                  {b.text}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Decorative circles */}
+        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-orange-100/40 blur-3xl pointer-events-none" />
+        <div className="absolute -right-10 bottom-0 w-60 h-60 rounded-full bg-sky-100/40 blur-3xl pointer-events-none" />
       </section>
 
-      {/* Destaques */}
-      <section className="border-y border-border/50 bg-card">
-        <div className="container py-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4">
+      {/* Service highlights */}
+      <section className="border-b border-orange-100 bg-white">
+        <div className="container py-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {highlights.map((h) => (
-              <div key={h.label} className="flex flex-col items-center text-center gap-2">
-                <h.icon className="h-6 w-6 text-primary/70" strokeWidth={1.5} />
-                <p className="text-sm font-semibold text-foreground">{h.label}</p>
-                <p className="text-xs text-muted-foreground">{h.desc}</p>
+              <div
+                key={h.label}
+                className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl bg-background hover:bg-secondary transition-colors"
+              >
+                <div className={`flex items-center justify-center w-12 h-12 rounded-2xl ${h.color}`}>
+                  <h.icon className="h-6 w-6" strokeWidth={1.8} />
+                </div>
+                <p className="text-sm font-bold text-foreground">{h.label}</p>
+                <p className="text-xs text-muted-foreground font-medium leading-snug">{h.desc}</p>
               </div>
             ))}
           </div>
@@ -115,48 +128,52 @@ const Index = () => (
           </SummaryBlock>
 
           <section aria-labelledby="why-heading" className="mb-16">
-            <h2 id="why-heading" className="text-2xl font-semibold mb-5">
-              Por que Escolher a Digital Mil Cores
+            <h2 id="why-heading" className="text-2xl font-semibold mb-6 text-foreground">
+              💛 Por que Escolher a Digital Mil Cores
             </h2>
             <ul className="space-y-3 text-foreground">
               {[
                 "Impressão Giclée a 2400 dpi em algodão e tela de qualidade museológica",
-                "Tintas pigmentadas arquivísticas com resistência ao desbotamento de 100+ anos (certificação Wilhelm Imaging Research)",
+                "Tintas pigmentadas arquivísticas com resistência ao desbotamento de 100+ anos",
                 "Perfis ICC para reprodução precisa de cores em todos os tipos de mídia",
                 "Envio para todo o Brasil com embalagem protetora",
                 "Restauração de fotos por artistas digitais treinados — reparos de riscos, desbotamento e danos",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
-                  <span>{item}</span>
+                <li key={item} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-orange-100 shadow-sm">
+                  <span className="mt-0.5 text-primary font-bold">✓</span>
+                  <span className="font-medium text-foreground/80">{item}</span>
                 </li>
               ))}
             </ul>
           </section>
 
           <section aria-labelledby="services-heading" className="mb-16">
-            <h2 id="services-heading" className="text-2xl font-semibold mb-5">
-              Visão Geral de Serviços e Preços
+            <h2 id="services-heading" className="text-2xl font-semibold mb-6 text-foreground">
+              🖼️ Visão Geral de Serviços e Preços
             </h2>
-            <div className="overflow-x-auto rounded-md border border-border/50">
+            <div className="overflow-x-auto rounded-2xl border border-orange-100 shadow-sm bg-white">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-border/50">
-                    <TableHead className="text-primary/70">Serviço</TableHead>
-                    <TableHead className="text-primary/70">Resolução</TableHead>
-                    <TableHead className="text-primary/70">Opções de Mídia</TableHead>
-                    <TableHead className="text-primary/70">Prazo</TableHead>
-                    <TableHead className="text-primary/70">Preço Inicial</TableHead>
+                  <TableRow className="border-orange-100 bg-secondary/60">
+                    <TableHead className="text-foreground font-bold">Serviço</TableHead>
+                    <TableHead className="text-foreground font-bold">Resolução</TableHead>
+                    <TableHead className="text-foreground font-bold">Opções de Mídia</TableHead>
+                    <TableHead className="text-foreground font-bold">Prazo</TableHead>
+                    <TableHead className="text-foreground font-bold">Preço Inicial</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {services.map((s) => (
-                    <TableRow key={s.name} className="border-border/50">
-                      <TableCell className="font-medium text-foreground">{s.name}</TableCell>
-                      <TableCell><Badge variant="secondary" className="text-xs">{s.resolution}</Badge></TableCell>
-                      <TableCell className="text-muted-foreground">{s.media}</TableCell>
-                      <TableCell className="text-muted-foreground">{s.turnaround}</TableCell>
-                      <TableCell className="text-foreground font-medium">{s.price}</TableCell>
+                    <TableRow key={s.name} className="border-orange-100 hover:bg-secondary/30">
+                      <TableCell className="font-bold text-foreground">{s.name}</TableCell>
+                      <TableCell>
+                        <Badge className="bg-secondary text-foreground/70 border-0 text-xs font-semibold">
+                          {s.resolution}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground font-medium">{s.media}</TableCell>
+                      <TableCell className="text-muted-foreground font-medium">{s.turnaround}</TableCell>
+                      <TableCell className="text-primary font-bold">{s.price}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -165,14 +182,14 @@ const Index = () => (
           </section>
 
           <section aria-labelledby="specs-heading" className="mb-16">
-            <h2 id="specs-heading" className="text-2xl font-semibold mb-5">
-              Especificações Técnicas
+            <h2 id="specs-heading" className="text-2xl font-semibold mb-6 text-foreground">
+              🔬 Especificações Técnicas
             </h2>
             <SummaryBlock>
               Todas as impressões Giclée são produzidas em impressoras Epson SureColor série P com tintas pigmentadas UltraChrome Pro.
               A largura máxima de impressão é de 1118 mm (44 polegadas) sem limite de comprimento para mídia em rolo.
             </SummaryBlock>
-            <ul className="space-y-3 text-foreground">
+            <ul className="space-y-3">
               {[
                 { label: "Impressoras", value: "Epson SureColor P9570, P7570" },
                 { label: "Sistema de tintas", value: "UltraChrome Pro12 — conjunto de 12 tintas pigmentadas" },
@@ -180,26 +197,30 @@ const Index = () => (
                 { label: "Largura máx. de impressão", value: "1118 mm (44″) — rolo e folha" },
                 { label: "Opções de papel", value: "Hahnemühle Photo Rag 308g, Canson Infinity Platine Fibre Rag 310g, Breathing Color Signa Smooth 270g" },
               ].map((item) => (
-                <li key={item.label} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
-                  <span><strong className="text-primary/80">{item.label}:</strong> {item.value}</span>
+                <li key={item.label} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-orange-100 shadow-sm">
+                  <span className="mt-0.5 text-sky-500 font-bold">→</span>
+                  <span className="font-medium text-foreground/80">
+                    <strong className="text-foreground">{item.label}:</strong> {item.value}
+                  </span>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section aria-labelledby="cta-heading" className="text-center py-12 rounded-md bg-card border border-border/50">
-            <h2 id="cta-heading" className="text-2xl font-semibold mb-3">
-              Pronto para Imprimir?
+          {/* CTA */}
+          <section aria-labelledby="cta-heading" className="text-center py-12 rounded-3xl bg-gradient-to-br from-orange-50 to-sky-50 border border-orange-100 shadow-sm">
+            <div className="text-4xl mb-4">📸</div>
+            <h2 id="cta-heading" className="text-2xl font-semibold mb-3 text-foreground">
+              Pronto para Imprimir suas Memórias?
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 font-medium max-w-sm mx-auto">
               Envie seus arquivos e receba um orçamento em menos de 2 minutos.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center rounded-sm bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-150 hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-full bg-primary text-white px-8 py-3.5 text-sm font-bold shadow-md transition-all duration-150 hover:bg-primary/90 hover:shadow-lg"
             >
-              Solicitar Orçamento
+              🎨 Solicitar Orçamento Grátis
             </Link>
           </section>
         </article>
