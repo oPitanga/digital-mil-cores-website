@@ -1,48 +1,64 @@
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, MessageCircle, Instagram, Music2, ShoppingBag } from "lucide-react";
 
 const SiteFooter = () => (
-  <footer className="border-t border-orange-100 mt-24 bg-white">
+  <footer className="border-t border-border mt-24 bg-card">
     <div className="container py-16">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Marca */}
         <div>
           <div className="flex items-center gap-2.5 mb-3">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-primary text-white font-bold text-base shadow-sm">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-[hsl(152,68%,28%)] text-primary-foreground font-bold text-base shadow-md shadow-primary/25">
               D
             </span>
-            <p style={{ fontFamily: "var(--font-display)" }} className="text-lg font-semibold text-foreground">
+            <p style={{ fontFamily: "var(--font-display)" }} className="text-lg font-bold text-foreground">
               Digital Mil Cores
             </p>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-            Laboratório fotográfico online profissional especializado em impressão Giclée de alta fidelidade,
-            restauração de fotos e produção com qualidade arquivística desde 2010.
+            Laboratório fotográfico online especializado em Giclée, restauração e fotolivros.
+            Qualidade arquivística desde 2010.
           </p>
-          <div className="flex items-center gap-1.5 mt-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-3 mt-5">
+            <a href="https://shopee.com.br/digitalmilcores" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-orange-500 transition-colors" aria-label="Shopee">
+              <ShoppingBag className="h-5 w-5" />
+            </a>
+            <a href="https://www.tiktok.com/@digitalmilcores" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors" aria-label="TikTok Shop">
+              <Music2 className="h-5 w-5" />
+            </a>
+            <a href="https://instagram.com/digitalmilcores" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-pink-500 transition-colors" aria-label="Instagram">
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a href="https://wa.me/5511999990000" target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-green-600 transition-colors" aria-label="WhatsApp">
+              <MessageCircle className="h-5 w-5" />
+            </a>
+          </div>
+          <div className="flex items-center gap-1.5 mt-3 text-xs text-muted-foreground">
             <span>Feito com</span>
             <Heart className="h-3 w-3 text-primary fill-primary" />
             <span>para famílias</span>
           </div>
         </div>
 
-        <nav aria-label="Navegação do rodapé">
-          <p style={{ fontFamily: "var(--font-display)" }} className="text-sm font-semibold text-foreground mb-4">
-            Páginas
+        {/* Serviços */}
+        <nav aria-label="Serviços">
+          <p style={{ fontFamily: "var(--font-display)" }} className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">
+            Serviços
           </p>
           <ul className="space-y-2 text-sm">
             {[
-              { to: "/", label: "Início" },
-              { to: "/services", label: "Serviços" },
-              { to: "/knowledge", label: "Base de Conhecimento" },
-              { to: "/faq", label: "Perguntas Frequentes" },
-              { to: "/contact", label: "Contato" },
-              { to: "/llms.txt", label: "llms.txt" },
+              { to: "/services/giclee", label: "Impressão Giclée" },
+              { to: "/services/restoration", label: "Restauração Fotográfica" },
+              { to: "/services/large-format", label: "Grande Formato" },
+              { to: "/services/photobook", label: "Fotolivros" },
+              { to: "/pricing", label: "Tabela de Preços" },
             ].map((l) => (
               <li key={l.to}>
-                <Link
-                  to={l.to}
-                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
-                >
+                <Link to={l.to} className="text-muted-foreground hover:text-primary transition-colors font-medium">
                   {l.label}
                 </Link>
               </li>
@@ -50,25 +66,78 @@ const SiteFooter = () => (
           </ul>
         </nav>
 
-        <div>
-          <p style={{ fontFamily: "var(--font-display)" }} className="text-sm font-semibold text-foreground mb-4">
-            Contato
+        {/* Empresa */}
+        <nav aria-label="Empresa">
+          <p style={{ fontFamily: "var(--font-display)" }} className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">
+            Empresa
           </p>
-          <address className="text-sm text-muted-foreground not-italic space-y-2 leading-relaxed font-medium">
-            <p>📧 info@digitalmilcores.com</p>
-            <p>📞 +55 11 9999-0000</p>
-            <p>📍 São Paulo, SP — Brasil</p>
-            <p className="pt-1 text-xs">Seg–Sex, 9h às 18h</p>
-          </address>
+          <ul className="space-y-2 text-sm">
+            {[
+              { to: "/about", label: "Sobre nós" },
+              { to: "/studio-tour", label: "O Laboratório" },
+              { to: "/knowledge", label: "Blog" },
+              { to: "/faq", label: "FAQ" },
+              { to: "/contact", label: "Contato" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="text-muted-foreground hover:text-primary transition-colors font-medium">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Lojas Online */}
+        <div>
+          <p style={{ fontFamily: "var(--font-display)" }} className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">
+            Comprar Online
+          </p>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a
+                href="https://shopee.com.br/digitalmilcores"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-orange-500 transition-colors font-medium"
+              >
+                <ShoppingBag className="h-4 w-4" /> Shopee
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@digitalmilcores"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
+              >
+                <Music2 className="h-4 w-4" /> TikTok Shopping
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://instagram.com/digitalmilcores"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-pink-500 transition-colors font-medium"
+              >
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+            </li>
+            <li className="pt-2 text-xs text-muted-foreground border-t border-border">
+              <p>📍 São Paulo, SP — Brasil</p>
+              <p className="mt-1">Seg–Sex, 9h às 18h</p>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="border-t border-orange-100 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div className="border-t border-border mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Digital Mil Cores. Todos os direitos reservados.
         </p>
-        <div className="flex gap-3">
-          {["🌟 Qualidade Arquivística", "🔒 Envio Seguro", "💛 Suporte Familiar"].map((badge) => (
+        <div className="flex gap-3 flex-wrap justify-center">
+          {["🌿 Qualidade Arquivística", "🔒 Envio Seguro", "💛 Atendimento Humano"].map((badge) => (
             <span key={badge} className="text-xs bg-secondary rounded-full px-3 py-1 text-foreground/70 font-semibold">
               {badge}
             </span>

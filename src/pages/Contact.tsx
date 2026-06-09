@@ -1,136 +1,145 @@
-import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import SummaryBlock from "@/components/SummaryBlock";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-import { z } from "zod";
+import { Badge } from "@/components/ui/badge";
+import { MessageCircle, Instagram, ShoppingBag, Music2, MapPin, Clock } from "lucide-react";
+import { useRevealOnScroll } from "@/hooks/use-intersection";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Nome é obrigatório").max(100),
-  email: z.string().trim().email("Endereço de e-mail inválido").max(255),
-  phone: z.string().trim().max(20).optional(),
-  subject: z.string().trim().min(1, "Assunto é obrigatório").max(200),
-  message: z.string().trim().min(1, "Mensagem é obrigatória").max(2000),
-});
+const channels = [
+  {
+    icon: ShoppingBag,
+    label: "Shopee",
+    desc: "Compre com segurança e rastreamento",
+    href: "https://shopee.com.br/digitalmilcores",
+    cta: "Acessar loja",
+    gradient: "from-orange-500 to-orange-600",
+    shadow: "shadow-orange-500/30",
+    bg: "bg-orange-50 border-orange-200 hover:border-orange-400",
+    iconColor: "text-orange-500",
+  },
+  {
+    icon: Music2,
+    label: "TikTok Shopping",
+    desc: "Veja nossos produtos em vídeo",
+    href: "https://www.tiktok.com/@digitalmilcores",
+    cta: "Ver loja",
+    gradient: "from-[#010101] to-[#444]",
+    shadow: "shadow-black/25",
+    bg: "bg-gray-50 border-gray-200 hover:border-gray-400",
+    iconColor: "text-gray-900",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    desc: "@digitalmilcores",
+    href: "https://instagram.com/digitalmilcores",
+    cta: "Seguir e comprar",
+    gradient: "from-pink-500 to-purple-600",
+    shadow: "shadow-pink-500/30",
+    bg: "bg-pink-50 border-pink-200 hover:border-pink-400",
+    iconColor: "text-pink-500",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    desc: "Atendimento em minutos",
+    href: "https://wa.me/5511999990000",
+    cta: "Iniciar conversa",
+    gradient: "from-green-500 to-green-600",
+    shadow: "shadow-green-500/30",
+    bg: "bg-green-50 border-green-200 hover:border-green-400",
+    iconColor: "text-green-600",
+  },
+];
 
 const ContactPage = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = contactSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((err) => {
-        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-    setErrors({});
-    toast.success("Mensagem enviada com sucesso! Responderemos em até 1 dia útil. 😊");
-    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-  };
-
-  const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+  useRevealOnScroll();
 
   return (
     <>
       <SiteHeader />
-      <main className="container max-w-2xl py-12">
-        <article>
-          <div className="text-center mb-10">
-            <div className="text-5xl mb-4">👋</div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Fale Conosco</h1>
-            <p className="text-muted-foreground font-medium">Adoramos ouvir de você! Nossa equipe responde em até 1 dia útil.</p>
-          </div>
 
-          <SummaryBlock>
-            Entre em contato com a Digital Mil Cores para orçamentos, dúvidas técnicas ou parcerias.
-            Atendimento telefônico disponível de segunda a sexta, das 9h às 18h.
-          </SummaryBlock>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-secondary/40 to-background py-20 text-center">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-primary/10 blur-3xl animate-float-slow" />
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-accent/10 blur-3xl animate-float-delay" />
+        </div>
+        <div className="container max-w-2xl relative">
+          <Badge variant="outline" className="mb-4 text-primary border-primary/40 font-semibold px-4 py-1.5">Contato</Badge>
+          <h1
+            style={{ fontFamily: "var(--font-display)" }}
+            className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+          >
+            Fale com a nossa equipe
+          </h1>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Compre diretamente pela Shopee ou TikTok Shopping, ou entre em contato
+            pelo Instagram e WhatsApp.
+          </p>
+        </div>
+      </section>
 
-          <div className="bg-white rounded-3xl border border-orange-100 shadow-sm p-8">
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <Label htmlFor="name" className="font-bold text-foreground">Nome Completo</Label>
-                  <Input
-                    id="name" name="name" autoComplete="name" value={form.name} onChange={update("name")}
-                    className="mt-1.5 rounded-xl border-orange-200 focus:border-primary focus:ring-primary/20"
-                    placeholder="Seu nome"
-                  />
-                  {errors.name && <p className="text-sm text-destructive mt-1 font-medium">{errors.name}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="email" className="font-bold text-foreground">Endereço de E-mail</Label>
-                  <Input
-                    id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={update("email")}
-                    className="mt-1.5 rounded-xl border-orange-200 focus:border-primary focus:ring-primary/20"
-                    placeholder="seu@email.com"
-                  />
-                  {errors.email && <p className="text-sm text-destructive mt-1 font-medium">{errors.email}</p>}
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="phone" className="font-bold text-foreground">Telefone <span className="font-normal text-muted-foreground">(opcional)</span></Label>
-                <Input
-                  id="phone" name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={update("phone")}
-                  className="mt-1.5 rounded-xl border-orange-200 focus:border-primary focus:ring-primary/20"
-                  placeholder="+55 11 99999-9999"
-                />
-              </div>
-              <div>
-                <Label htmlFor="subject" className="font-bold text-foreground">Assunto</Label>
-                <Input
-                  id="subject" name="subject" value={form.subject} onChange={update("subject")}
-                  className="mt-1.5 rounded-xl border-orange-200 focus:border-primary focus:ring-primary/20"
-                  placeholder="Ex: Orçamento para fotolivro"
-                />
-                {errors.subject && <p className="text-sm text-destructive mt-1 font-medium">{errors.subject}</p>}
-              </div>
-              <div>
-                <Label htmlFor="message" className="font-bold text-foreground">Mensagem</Label>
-                <Textarea
-                  id="message" name="message" rows={5} value={form.message} onChange={update("message")}
-                  className="mt-1.5 rounded-xl border-orange-200 focus:border-primary focus:ring-primary/20 resize-none"
-                  placeholder="Conte-nos como podemos ajudar você..."
-                />
-                {errors.message && <p className="text-sm text-destructive mt-1 font-medium">{errors.message}</p>}
-              </div>
-              <Button
-                type="submit"
-                className="w-full rounded-full bg-primary text-white font-bold py-3 text-sm shadow-md hover:bg-primary/90 transition-all"
-              >
-                📨 Enviar Mensagem
-              </Button>
-            </form>
-          </div>
+      {/* Canais de compra e atendimento */}
+      <section className="container py-16 max-w-4xl mx-auto">
+        <div className="text-center mb-10 reveal">
+          <Badge variant="secondary" className="mb-3 px-4 py-1">Onde nos encontrar</Badge>
+          <h2
+            style={{ fontFamily: "var(--font-display)" }}
+            className="text-2xl md:text-3xl font-bold text-foreground"
+          >
+            Escolha o canal de sua preferência
+          </h2>
+        </div>
 
-          <section aria-labelledby="contact-info" className="mt-10">
-            <h2 id="contact-info" className="text-xl font-bold mb-5 text-foreground">📍 Outras Formas de Contato</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                { emoji: "📧", label: "E-mail", value: "info@digitalmilcores.com" },
-                { emoji: "📞", label: "Telefone", value: "+55 11 9999-0000" },
-                { emoji: "📍", label: "Endereço", value: "Rua Augusta 1234, São Paulo, SP" },
-              ].map((item) => (
-                <div key={item.label} className="bg-white rounded-2xl border border-orange-100 p-4 text-center shadow-sm">
-                  <div className="text-2xl mb-2">{item.emoji}</div>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">{item.label}</p>
-                  <p className="text-sm font-semibold text-foreground">{item.value}</p>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {channels.map((c, i) => (
+            <a
+              key={c.label}
+              href={c.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`reveal reveal-delay-${i + 1} group flex items-center gap-5 ${c.bg} border-2 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
+            >
+              <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                <c.icon className={`h-7 w-7 ${c.iconColor}`} />
+              </div>
+              <div className="flex-1 text-left">
+                <p className="font-bold text-foreground text-base">{c.label}</p>
+                <p className="text-sm text-muted-foreground mb-3">{c.desc}</p>
+                <span className={`inline-flex items-center gap-1 text-xs font-bold bg-gradient-to-r ${c.gradient} bg-clip-text text-transparent`}>
+                  {c.cta} →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Info adicional */}
+      <section className="container pb-20 max-w-4xl mx-auto">
+        <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex items-center gap-4 bg-card border border-border rounded-2xl p-5">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <MapPin className="h-5 w-5 text-primary" />
             </div>
-          </section>
-        </article>
-      </main>
+            <div>
+              <p className="text-xs text-muted-foreground font-medium">Localização</p>
+              <p className="text-sm font-semibold text-foreground">São Paulo, SP · Brasil</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 bg-card border border-border rounded-2xl p-5">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Clock className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground font-medium">Horário de atendimento</p>
+              <p className="text-sm font-semibold text-foreground">Seg–Sex, 9h às 18h</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <SiteFooter />
     </>
   );

@@ -77,10 +77,36 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "float-delay": {
+          "0%, 100%": { transform: "translateY(-6px)" },
+          "50%": { transform: "translateY(6px)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 16px 4px hsl(162 68% 36% / 0.25), 0 4px 16px hsl(162 68% 36% / 0.15)" },
+          "50%": { boxShadow: "0 0 32px 8px hsl(162 68% 36% / 0.45), 0 8px 32px hsl(162 68% 36% / 0.30)" },
+        },
+        "gradient-shift": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.15s ease-out",
         "accordion-up": "accordion-up 0.15s ease-out",
+        "float": "float 3.5s ease-in-out infinite",
+        "float-slow": "float 5.5s ease-in-out infinite",
+        "float-delay": "float-delay 4s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 2.5s ease-in-out infinite",
+        "gradient-shift": "gradient-shift 6s ease infinite",
+        "spin-slow": "spin-slow 12s linear infinite",
       },
     },
   },

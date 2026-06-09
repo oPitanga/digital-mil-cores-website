@@ -1,233 +1,382 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import SummaryBlock from "@/components/SummaryBlock";
-import JsonLd from "@/components/JsonLd";
-import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Link } from "react-router-dom";
-import { Camera, Printer, Image, BookOpen, Frame, Star, Shield, Clock } from "lucide-react";
+import ServiceCompareCard from "@/components/ServiceCompareCard";
+import ProcessTimeline from "@/components/ProcessTimeline";
+import TeamCard from "@/components/TeamCard";
+import SocialCTABar from "@/components/SocialCTABar";
+import { useRevealOnScroll } from "@/hooks/use-intersection";
+import { Star, Shield, Award, ArrowRight, Camera, Sparkles } from "lucide-react";
 
 const services = [
-  { name: "Impressão Giclée Fine Art", resolution: "2400 dpi", media: "Algodão, Tela", turnaround: "3–5 dias úteis", price: "A partir de R$45" },
-  { name: "Restauração de Fotos", resolution: "N/A", media: "Entrega digital", turnaround: "5–7 dias úteis", price: "A partir de R$120" },
-  { name: "Impressão de Grande Formato", resolution: "1440 dpi", media: "Vinil, Tecido, Papel", turnaround: "2–4 dias úteis", price: "A partir de R$80/m²" },
-  { name: "Produção de Fotolivros", resolution: "300 dpi", media: "Capa dura, Brochura", turnaround: "7–10 dias úteis", price: "A partir de R$150" },
-  { name: "Estiramento e Moldura em Tela", resolution: "N/A", media: "Moldura em madeira, Gallery wrap", turnaround: "5–7 dias úteis", price: "A partir de R$90" },
+  {
+    icon: "🎨",
+    title: "Impressão Giclée",
+    description: "A mais alta fidelidade cromática para arte e fotografia com durabilidade de 100+ anos.",
+    specs: ["2400 dpi", "Tintas arquivísticas", "Papel cotton ou canvas", "Até 1,5 m de largura"],
+    priceRange: "R$ 89",
+    badge: "Fine Art",
+    href: "/services/giclee",
+    popular: true,
+  },
+  {
+    icon: "🖼️",
+    title: "Restauração Fotográfica",
+    description: "Revivemos fotos antigas, danificadas ou desbotadas com retoque digital manual.",
+    specs: ["Análise individualizada", "Retoque manual de alta precisão", "Entrega em TIFF + JPEG", "Aprovação prévia incluída"],
+    priceRange: "R$ 150",
+    badge: "Especialidade",
+    href: "/services/restoration",
+    popular: false,
+  },
+  {
+    icon: "📐",
+    title: "Grande Formato",
+    description: "Impressões de grande porte para exposições, eventos e decoração corporativa.",
+    specs: ["1440 dpi", "Até 1,5 m de largura", "Papel fosco ou brilhante", "Acabamento em lona ou papel"],
+    priceRange: "R$ 120",
+    href: "/services/large-format",
+    popular: false,
+  },
+  {
+    icon: "📚",
+    title: "Fotolivros",
+    description: "Fotolivros premium com encadernação lay-flat e papel fotográfico de alto brilho.",
+    specs: ["Encadernação lay-flat", "Papel 300g Premium", "Até 100 páginas", "Capa dura personalizada"],
+    priceRange: "R$ 249",
+    badge: "Premium",
+    href: "/services/photobook",
+    popular: false,
+  },
 ];
 
-const highlights = [
-  { icon: Printer, label: "Giclée 2400 dpi", desc: "Algodão e tela com qualidade de museu", color: "bg-orange-100 text-orange-600" },
-  { icon: Camera, label: "Restauração de Fotos", desc: "Reparos de riscos, desbotamento e danos", color: "bg-sky-100 text-sky-600" },
-  { icon: Image, label: "Grande Formato", desc: "Até 1,5m de largura em vinil e tecido", color: "bg-green-100 text-green-600" },
-  { icon: BookOpen, label: "Fotolivros", desc: "Encadernação lay-flat, papel premium", color: "bg-purple-100 text-purple-600" },
-  { icon: Frame, label: "Tela e Moldura", desc: "Gallery wrap em chassi de madeira seca", color: "bg-yellow-100 text-yellow-600" },
+const team = [
+  { name: "Carlos Mendes", role: "Diretor de Cor",     bio: "25 anos de experiência em colorimetria e calibração de equipamentos fotográficos profissionais.", initials: "CM" },
+  { name: "Ana Ferreira",  role: "Restauradora Chefe", bio: "Especialista em restauração digital, formada em conservação e restauro pela ECA-USP.", initials: "AF" },
+  { name: "Lucas Alves",   role: "Técnico de Impressão", bio: "Expert em impressão fine art com domínio completo dos perfis ICC e papéis de algodão.", initials: "LA" },
 ];
 
-const trustBadges = [
-  { icon: Star, text: "Mais de 15 anos de experiência" },
-  { icon: Shield, text: "Materiais arquivísticos 100+" },
-  { icon: Clock, text: "Entrega rápida para todo Brasil" },
+const testimonials = [
+  { text: "As fotos do meu casamento ficaram perfeitas. A qualidade da impressão Giclée é incomparável.", author: "Mariana R.", stars: 5 },
+  { text: "Restauraram fotos dos meus avós que eu achei que estavam perdidas para sempre. Trabalho impecável.", author: "João P.", stars: 5 },
+  { text: "Atendimento rápido e resultado profissional. Já fiz três pedidos e sempre superou as expectativas.", author: "Fernanda S.", stars: 5 },
 ];
 
-const Index = () => (
-  <>
-    <JsonLd
-      type="Organization"
-      data={{
-        name: "Digital Mil Cores",
-        url: "https://digitalmilcores.com",
-        description: "Laboratório fotográfico online profissional especializado em impressão Giclée de alta fidelidade, restauração de fotos e produção com qualidade arquivística.",
-        foundingDate: "2010",
-        areaServed: "Brazil",
-        contactPoint: {
-          "@type": "ContactPoint",
-          email: "info@digitalmilcores.com",
-          telephone: "+551199990000",
-          contactType: "customer service",
-        },
-      }}
-    />
-    <JsonLd type="WebSite" data={{ name: "Digital Mil Cores", url: "https://digitalmilcores.com" }} />
-    <SiteHeader />
+/* Polaroid person photos — revealed-print aesthetic */
+const personPhotos = [
+  {
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=220&h=280&q=80",
+    label: "Formatura",
+    rotate: "-rotate-6",
+    pos: "top-4 -left-8",
+    delay: "0.5s",
+    anim: "animate-float",
+    size: "w-28 h-32",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=220&h=280&q=80",
+    label: "Retrato",
+    rotate: "rotate-8",
+    pos: "-bottom-4 -right-8",
+    delay: "1.2s",
+    anim: "animate-float-delay",
+    size: "w-28 h-32",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=220&h=280&q=80",
+    label: "Casamento",
+    rotate: "-rotate-3",
+    pos: "-bottom-2 left-6",
+    delay: "2s",
+    anim: "animate-float",
+    size: "w-24 h-28",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=220&h=280&q=80",
+    label: "Família",
+    rotate: "rotate-3",
+    pos: "top-2 right-10",
+    delay: "2.8s",
+    anim: "animate-float-delay",
+    size: "w-24 h-28",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=220&h=280&q=80",
+    label: "Aniversário",
+    rotate: "rotate-5",
+    pos: "top-24 -right-6",
+    delay: "1.7s",
+    anim: "animate-float",
+    size: "w-24 h-28",
+  },
+];
 
-    <main>
+const Index = () => {
+  useRevealOnScroll();
+
+  return (
+    <>
+      <SiteHeader />
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-background to-sky-50 border-b border-orange-100">
-        <div className="container relative py-20 md:py-32">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-bold text-primary shadow-sm border border-orange-100 mb-6">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              O Principal Laboratório Fotográfico de São Paulo
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-              Preserve suas memórias com{" "}
-              <span className="text-primary">qualidade para a família</span>
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed font-medium">
-              Impressão Giclée a 2400 dpi em mídias de qualidade museológica. Tintas pigmentadas com durabilidade de mais de 100 anos.
-              Perfeito para álbuns de família, fotos de casamento e recordações especiais.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-primary text-white px-8 py-3.5 text-sm font-bold shadow-md transition-all duration-150 hover:bg-primary/90 hover:shadow-lg"
+      <section className="relative overflow-hidden">
+        {/* Animated orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/12 blur-3xl animate-float-slow" />
+          <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-accent/8 blur-3xl animate-float-delay" />
+          <div className="absolute top-1/3 left-1/4 w-56 h-56 rounded-full bg-[hsl(240,88%,58%)]/8 blur-2xl animate-float-slow" style={{ animationDelay: "2s" }} />
+        </div>
+
+        <div className="container relative py-20 md:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Left: Text */}
+            <div className="text-center lg:text-left">
+              <Badge
+                variant="outline"
+                className="mb-6 border-primary/40 font-semibold gap-1.5 px-4 py-1.5 text-xs tracking-wide text-primary"
               >
-                🎨 Solicitar Orçamento
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center rounded-full border-2 border-primary/30 text-primary bg-white px-8 py-3.5 text-sm font-bold transition-all duration-150 hover:bg-secondary"
+                <Sparkles className="h-3 w-3" />
+                Laboratório Fotográfico Online · São Paulo
+              </Badge>
+
+              <h1
+                style={{ fontFamily: "var(--font-display)" }}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6"
               >
-                Ver Nossos Serviços →
-              </Link>
+                Memórias que duram{" "}
+                <span className="text-gradient">gerações</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+                Impressão Giclée de alta fidelidade, restauração fotográfica e fotolivros premium.
+                Qualidade arquivística com durabilidade de 100+ anos.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Button asChild size="lg" className="gap-2 text-base px-8">
+                  <Link to="/pricing">
+                    Ver preços <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="gap-2 text-base px-8">
+                  <Link to="/about">Conheça o laboratório</Link>
+                </Button>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-10 text-sm text-muted-foreground font-medium">
+                <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-primary" /> Tintas arquivísticas</span>
+                <span className="flex items-center gap-1.5"><Award className="h-4 w-4 text-primary" /> 15 anos de experiência</span>
+                <span className="flex items-center gap-1.5"><Star className="h-4 w-4 text-yellow-400 fill-yellow-400" /> 4,9 / 5 estrelas</span>
+              </div>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 mt-8">
-              {trustBadges.map((b) => (
-                <div key={b.text} className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
-                  <b.icon className="h-4 w-4 text-primary" />
-                  {b.text}
+            {/* Right: Photography collage */}
+            <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
+              {/* Spinning ring decorations */}
+              <div className="absolute w-80 h-80 rounded-full border-2 border-dashed border-primary/20 animate-spin-slow" />
+              <div className="absolute w-96 h-96 rounded-full border border-accent/15 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "20s" }} />
+
+              {/* Main dark photo frame */}
+              <div className="relative z-10 w-64 h-80 rounded-2xl overflow-hidden shadow-2xl shadow-primary/30 rotate-2 animate-float-slow">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(218,70%,8%)] via-[hsl(218,60%,12%)] to-[hsl(218,70%,6%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(45,100%,30%)]/20 via-transparent to-transparent" />
+                {/* Grid of small photos */}
+                <div className="absolute inset-3 grid grid-cols-2 gap-1.5 opacity-90">
+                  <div className="rounded-lg overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1529686342540-1b43aec0df75?auto=format&fit=crop&w=150&h=180&q=75"
+                      alt=""
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-rose-400 to-pink-600'; }}
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=150&h=180&q=75"
+                      alt=""
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-sky-300 to-blue-500'; }}
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=150&h=180&q=75"
+                      alt=""
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-amber-300 to-orange-500'; }}
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&w=150&h=180&q=75"
+                      alt=""
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-violet-300 to-purple-500'; }}
+                    />
+                  </div>
+                </div>
+                {/* Lab badge */}
+                <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-sm rounded-xl p-2.5">
+                  <p className="text-yellow-300 text-[10px] font-mono tracking-widest uppercase">Digital Mil Cores</p>
+                  <p className="text-white/50 text-[9px] font-mono">Lab · São Paulo · Est. 2010</p>
+                </div>
+                <div className="absolute top-3 left-3 bg-white/10 backdrop-blur-sm rounded-lg p-1.5">
+                  <Camera className="h-4 w-4 text-white/70" />
+                </div>
+              </div>
+
+              {/* Person photo polaroids */}
+              {personPhotos.map((p) => (
+                <div
+                  key={p.label}
+                  className={`absolute ${p.pos} z-20 ${p.size} bg-white shadow-xl rounded-md ${p.rotate} overflow-hidden ${p.anim}`}
+                  style={{ animationDelay: p.delay }}
+                >
+                  <div className="w-full" style={{ height: "75%" }}>
+                    <img
+                      src={p.src}
+                      alt={p.label}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const el = e.target as HTMLImageElement;
+                        el.style.display = 'none';
+                        const parent = el.parentElement!;
+                        parent.style.background = 'linear-gradient(135deg, #ddd 0%, #bbb 100%)';
+                      }}
+                    />
+                  </div>
+                  <div className="px-2 pt-1 text-center">
+                    <p className="text-[9px] text-gray-500 font-mono tracking-tight">{p.label}</p>
+                  </div>
                 </div>
               ))}
+
+              {/* Star decorations */}
+              <div className="absolute top-8 right-2 z-30 animate-float" style={{ animationDelay: "0.8s" }}>
+                <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 opacity-80" />
+              </div>
+              <div className="absolute bottom-14 left-0 z-30 animate-float" style={{ animationDelay: "1.8s" }}>
+                <Star className="h-3.5 w-3.5 text-primary fill-primary opacity-70" />
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Decorative circles */}
-        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-orange-100/40 blur-3xl pointer-events-none" />
-        <div className="absolute -right-10 bottom-0 w-60 h-60 rounded-full bg-sky-100/40 blur-3xl pointer-events-none" />
       </section>
 
-      {/* Service highlights */}
-      <section className="border-b border-orange-100 bg-white">
-        <div className="container py-12">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {highlights.map((h) => (
-              <div
-                key={h.label}
-                className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl bg-background hover:bg-secondary transition-colors"
-              >
-                <div className={`flex items-center justify-center w-12 h-12 rounded-2xl ${h.color}`}>
-                  <h.icon className="h-6 w-6" strokeWidth={1.8} />
-                </div>
-                <p className="text-sm font-bold text-foreground">{h.label}</p>
-                <p className="text-xs text-muted-foreground font-medium leading-snug">{h.desc}</p>
+      {/* Serviços */}
+      <section className="container py-24">
+        <div className="text-center mb-14 reveal">
+          <Badge variant="secondary" className="mb-3 px-4 py-1">Nossos Serviços</Badge>
+          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
+            Qualidade para cada necessidade
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Do fine art à restauração — soluções profissionais de impressão fotográfica para artistas, famílias e empresas.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((s, i) => (
+            <div key={s.title} className={`reveal reveal-delay-${Math.min(i + 1, 5)}`}>
+              <ServiceCompareCard {...s} />
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Button asChild variant="ghost" className="gap-2">
+            <Link to="/pricing">Ver tabela de preços completa <ArrowRight className="h-4 w-4" /></Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Processo de produção */}
+      <section className="bg-secondary/40 border-y border-border py-24">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="reveal-left">
+              <Badge variant="secondary" className="mb-3 px-4 py-1">Do envio à entrega</Badge>
+              <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-4">
+                Como funciona o processo
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Cada pedido passa por um rigoroso fluxo de produção para garantir que sua impressão chegue
+                exatamente como você imaginou — ou melhor.
+              </p>
+              <Button asChild variant="outline">
+                <Link to="/studio-tour">Ver o laboratório</Link>
+              </Button>
+            </div>
+            <div className="reveal-right">
+              <ProcessTimeline />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section className="container py-24">
+        <div className="text-center mb-14 reveal">
+          <Badge variant="secondary" className="mb-3 px-4 py-1">Depoimentos</Badge>
+          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
+            O que nossos clientes dizem
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <div key={i} className={`reveal reveal-delay-${i + 1} bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}>
+              <div className="flex gap-0.5 mb-3">
+                {Array.from({ length: t.stars }).map((_, j) => (
+                  <Star key={j} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              <p className="text-foreground/80 text-sm leading-relaxed mb-4">"{t.text}"</p>
+              <p className="text-xs font-semibold text-primary">— {t.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Equipe */}
+      <section className="bg-secondary/40 border-y border-border py-24">
+        <div className="container">
+          <div className="text-center mb-14 reveal">
+            <Badge variant="secondary" className="mb-3 px-4 py-1">Nossa Equipe</Badge>
+            <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
+              Especialistas por trás de cada impressão
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              Cada membro da equipe é apaixonado por fotografia e comprometido com a excelência técnica.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {team.map((member, i) => (
+              <div key={member.name} className={`reveal reveal-delay-${i + 1}`}>
+                <TeamCard {...member} />
               </div>
             ))}
           </div>
+          <div className="text-center mt-8">
+            <Button asChild variant="ghost" className="gap-2">
+              <Link to="/about">Conhecer a equipe completa <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      <div className="container max-w-3xl py-16">
-        <article>
-          <SummaryBlock>
-            A Digital Mil Cores é um laboratório fotográfico online sediado em São Paulo, oferecendo impressão Giclée de alta fidelidade a 2400 dpi,
-            restauração de fotos, impressão de grande formato e produção de fotolivros. Todas as impressões utilizam tintas pigmentadas de qualidade arquivística
-            com durabilidade de mais de 100 anos contra desbotamento.
-          </SummaryBlock>
+      {/* CTA Social */}
+      <section className="container py-24">
+        <SocialCTABar
+          heading="Pronto para preservar suas memórias?"
+          subheading="Compre pela Shopee, TikTok Shop, ou fale diretamente com a nossa equipe no Instagram e WhatsApp."
+        />
+      </section>
 
-          <section aria-labelledby="why-heading" className="mb-16">
-            <h2 id="why-heading" className="text-2xl font-semibold mb-6 text-foreground">
-              💛 Por que Escolher a Digital Mil Cores
-            </h2>
-            <ul className="space-y-3 text-foreground">
-              {[
-                "Impressão Giclée a 2400 dpi em algodão e tela de qualidade museológica",
-                "Tintas pigmentadas arquivísticas com resistência ao desbotamento de 100+ anos",
-                "Perfis ICC para reprodução precisa de cores em todos os tipos de mídia",
-                "Envio para todo o Brasil com embalagem protetora",
-                "Restauração de fotos por artistas digitais treinados — reparos de riscos, desbotamento e danos",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-orange-100 shadow-sm">
-                  <span className="mt-0.5 text-primary font-bold">✓</span>
-                  <span className="font-medium text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section aria-labelledby="services-heading" className="mb-16">
-            <h2 id="services-heading" className="text-2xl font-semibold mb-6 text-foreground">
-              🖼️ Visão Geral de Serviços e Preços
-            </h2>
-            <div className="overflow-x-auto rounded-2xl border border-orange-100 shadow-sm bg-white">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-orange-100 bg-secondary/60">
-                    <TableHead className="text-foreground font-bold">Serviço</TableHead>
-                    <TableHead className="text-foreground font-bold">Resolução</TableHead>
-                    <TableHead className="text-foreground font-bold">Opções de Mídia</TableHead>
-                    <TableHead className="text-foreground font-bold">Prazo</TableHead>
-                    <TableHead className="text-foreground font-bold">Preço Inicial</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {services.map((s) => (
-                    <TableRow key={s.name} className="border-orange-100 hover:bg-secondary/30">
-                      <TableCell className="font-bold text-foreground">{s.name}</TableCell>
-                      <TableCell>
-                        <Badge className="bg-secondary text-foreground/70 border-0 text-xs font-semibold">
-                          {s.resolution}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground font-medium">{s.media}</TableCell>
-                      <TableCell className="text-muted-foreground font-medium">{s.turnaround}</TableCell>
-                      <TableCell className="text-primary font-bold">{s.price}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </section>
-
-          <section aria-labelledby="specs-heading" className="mb-16">
-            <h2 id="specs-heading" className="text-2xl font-semibold mb-6 text-foreground">
-              🔬 Especificações Técnicas
-            </h2>
-            <SummaryBlock>
-              Todas as impressões Giclée são produzidas em impressoras Epson SureColor série P com tintas pigmentadas UltraChrome Pro.
-              A largura máxima de impressão é de 1118 mm (44 polegadas) sem limite de comprimento para mídia em rolo.
-            </SummaryBlock>
-            <ul className="space-y-3">
-              {[
-                { label: "Impressoras", value: "Epson SureColor P9570, P7570" },
-                { label: "Sistema de tintas", value: "UltraChrome Pro12 — conjunto de 12 tintas pigmentadas" },
-                { label: "Gestão de cores", value: "Perfis ICC personalizados por mídia, calibrados com X-Rite i1Pro3" },
-                { label: "Largura máx. de impressão", value: "1118 mm (44″) — rolo e folha" },
-                { label: "Opções de papel", value: "Hahnemühle Photo Rag 308g, Canson Infinity Platine Fibre Rag 310g, Breathing Color Signa Smooth 270g" },
-              ].map((item) => (
-                <li key={item.label} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-orange-100 shadow-sm">
-                  <span className="mt-0.5 text-sky-500 font-bold">→</span>
-                  <span className="font-medium text-foreground/80">
-                    <strong className="text-foreground">{item.label}:</strong> {item.value}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* CTA */}
-          <section aria-labelledby="cta-heading" className="text-center py-12 rounded-3xl bg-gradient-to-br from-orange-50 to-sky-50 border border-orange-100 shadow-sm">
-            <div className="text-4xl mb-4">📸</div>
-            <h2 id="cta-heading" className="text-2xl font-semibold mb-3 text-foreground">
-              Pronto para Imprimir suas Memórias?
-            </h2>
-            <p className="text-muted-foreground mb-6 font-medium max-w-sm mx-auto">
-              Envie seus arquivos e receba um orçamento em menos de 2 minutos.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-primary text-white px-8 py-3.5 text-sm font-bold shadow-md transition-all duration-150 hover:bg-primary/90 hover:shadow-lg"
-            >
-              🎨 Solicitar Orçamento Grátis
-            </Link>
-          </section>
-        </article>
-      </div>
-    </main>
-    <SiteFooter />
-  </>
-);
+      <SiteFooter />
+    </>
+  );
+};
 
 export default Index;
