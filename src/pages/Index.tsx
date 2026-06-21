@@ -235,6 +235,19 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Faixa Shopee */}
+      <div className="w-full overflow-hidden py-3.5" style={{ background: 'linear-gradient(90deg, #EE4D2D, #FF6633)' }}>
+        <div className="flex whitespace-nowrap animate-marquee">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i} className="inline-flex items-center gap-3 mx-10 text-white font-bold text-sm tracking-wide shrink-0">
+              <span>🛍️</span>
+              <span>Loja mais bem avaliada da Shopee</span>
+              <span className="text-yellow-300">⭐⭐⭐⭐⭐</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Serviços */}
       <section className="container py-24">
         <div className="text-center mb-14 reveal">
@@ -304,19 +317,6 @@ const Index = () => {
           </Button>
         </div>
       </section>
-
-      {/* Faixa Shopee */}
-      <div className="w-full overflow-hidden py-3.5" style={{ background: 'linear-gradient(90deg, #EE4D2D, #FF6633)' }}>
-        <div className="flex whitespace-nowrap animate-marquee">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span key={i} className="inline-flex items-center gap-3 mx-10 text-white font-bold text-sm tracking-wide shrink-0">
-              <span>🛍️</span>
-              <span>Loja mais bem avaliada da Shopee</span>
-              <span className="text-yellow-300">⭐⭐⭐⭐⭐</span>
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* Depoimentos */}
       <section className="container py-24">
