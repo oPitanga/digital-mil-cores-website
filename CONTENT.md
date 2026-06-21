@@ -29,6 +29,16 @@
 - FAQ → /faq
 - Contato → /contact
 
+### Rodapé — Coluna: Comprar Online
+- **Título da coluna:** Comprar Online
+- Shopee → https://shopee.com.br/digitalmilcores
+- TikTok Shopping → https://www.tiktok.com/@digitalmilcores
+- Instagram → https://instagram.com/digitalmilcores
+
+### Rodapé — Coluna: Informações
+- **Localização:** Rua Benedito de Almeida Bueno, 134 - Centro - Atibaia, SP — Brasil
+- **Horário:** Seg–Sex, 9h às 18h e Sábados, 9h às 13h
+
 ### Rodapé — Selos de confiança
 - 🌿 Qualidade de Revelação Fotográfica
 - 🔒 Envio Seguro

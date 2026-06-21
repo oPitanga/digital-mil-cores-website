@@ -122,8 +122,10 @@ const SiteFooter = () => (
               </a>
             </li>
             <li className="pt-2 text-xs text-muted-foreground border-t border-border">
-              <p>📍 São Paulo, SP — Brasil</p>
+              <p>📍 R. Benedito de Almeida Bueno, 134</p>
+              <p>Centro — Atibaia, SP</p>
               <p className="mt-1">Seg–Sex, 9h às 18h</p>
+              <p>Sábados, 9h às 13h</p>
             </li>
           </ul>
         </div>

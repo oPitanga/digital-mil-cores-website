@@ -124,8 +124,9 @@ const ContactPage = () => {
               <MapPin className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Localização</p>
-              <p className="text-sm font-semibold text-foreground">São Paulo, SP · Brasil</p>
+              <p className="text-xs text-muted-foreground font-medium">Endereço</p>
+              <p className="text-sm font-semibold text-foreground">R. Benedito de Almeida Bueno, 134</p>
+              <p className="text-xs text-muted-foreground">Centro — Atibaia, SP</p>
             </div>
           </div>
           <div className="flex items-center gap-4 bg-card border border-border rounded-2xl p-5">
@@ -135,6 +136,7 @@ const ContactPage = () => {
             <div>
               <p className="text-xs text-muted-foreground font-medium">Horário de atendimento</p>
               <p className="text-sm font-semibold text-foreground">Seg–Sex, 9h às 18h</p>
+              <p className="text-xs text-muted-foreground">Sábados, 9h às 13h</p>
             </div>
           </div>
         </div>
