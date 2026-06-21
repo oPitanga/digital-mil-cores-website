@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { CheckCircle2 } from "lucide-react";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
-import { Star, Shield, Award, ArrowRight, Sparkles, Camera } from "lucide-react";
+import { Star, Shield, Award, ArrowRight, Sparkles, Camera, ChevronLeft, ChevronRight } from "lucide-react";
 import pedraGrande from "@/assets/images/Pedra Grande.jpg";
 
 const services = [
@@ -58,8 +59,16 @@ const filmFrames2 = [
   { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=80&h=62&q=60", fb: "#9C27B0" },
 ];
 
+const PER_PAGE = 3;
+
 const Index = () => {
   useRevealOnScroll();
+  const [testimonialPage, setTestimonialPage] = useState(0);
+  const totalPages = Math.ceil(testimonials.length / PER_PAGE);
+  const visibleTestimonials = testimonials.slice(
+    testimonialPage * PER_PAGE,
+    (testimonialPage + 1) * PER_PAGE,
+  );
 
   return (
     <>
@@ -309,9 +318,13 @@ const Index = () => {
           </p>
           <p className="text-muted-foreground mt-3 font-semibold">É para isso que a gente existe.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div key={i} className={`reveal reveal-delay-${Math.min(i + 1, 5)} bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 transition-opacity duration-300">
+          {visibleTestimonials.map((t, i) => (
+            <div
+              key={`${testimonialPage}-${i}`}
+              className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+            >
               <div className="flex gap-0.5 mb-3">
                 {Array.from({ length: t.stars }).map((_, j) => (
                   <Star key={j} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
@@ -321,6 +334,43 @@ const Index = () => {
               <p className="text-xs font-semibold text-primary">— {t.author}</p>
             </div>
           ))}
+        </div>
+
+        {/* Navegação do carrossel */}
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button
+            onClick={() => setTestimonialPage((p) => Math.max(p - 1, 0))}
+            disabled={testimonialPage === 0}
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Depoimentos anteriores"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setTestimonialPage(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === testimonialPage
+                    ? "w-6 h-2.5 bg-primary"
+                    : "w-2.5 h-2.5 bg-border hover:bg-primary/40"
+                }`}
+                aria-label={`Página ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => setTestimonialPage((p) => Math.min(p + 1, totalPages - 1))}
+            disabled={testimonialPage === totalPages - 1}
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/60 hover:text-foreground hover:border-primary hover:bg-primary/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Próximos depoimentos"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </section>
 
