@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 218 58% 16%;
-    --foreground: 210 25% 93%;
+    --background: 215 75% 41%;
+    --foreground: 0 0% 98%;
 
-    --card: 218 50% 21%;
-    --card-foreground: 210 25% 93%;
+    --card: 216 79% 28%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 218 50% 21%;
-    --popover-foreground: 210 25% 93%;
+    --popover: 216 79% 28%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 217 92% 64%;
-    --primary-foreground: 218 65% 8%;
+    --primary: 44 100% 57%;
+    --primary-foreground: 216 79% 15%;
 
-    --secondary: 218 45% 26%;
-    --secondary-foreground: 210 25% 82%;
+    --secondary: 215 72% 33%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 218 40% 22%;
-    --muted-foreground: 218 18% 60%;
+    --muted: 215 70% 36%;
+    --muted-foreground: 215 30% 78%;
 
-    --accent: 45 100% 60%;
-    --accent-foreground: 218 65% 10%;
+    --accent: 44 100% 57%;
+    --accent-foreground: 216 79% 15%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 218 38% 28%;
-    --input: 218 38% 28%;
-    --ring: 217 92% 64%;
+    --border: 215 60% 50%;
+    --input: 215 60% 50%;
+    --ring: 44 100% 57%;
 
     --radius: 0.875rem;
 
-    --sidebar-background: 218 58% 16%;
-    --sidebar-foreground: 210 25% 93%;
-    --sidebar-primary: 217 92% 64%;
-    --sidebar-primary-foreground: 218 65% 8%;
-    --sidebar-accent: 218 45% 26%;
-    --sidebar-accent-foreground: 210 25% 82%;
-    --sidebar-border: 218 38% 28%;
-    --sidebar-ring: 217 92% 64%;
+    --sidebar-background: 215 75% 41%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 44 100% 57%;
+    --sidebar-primary-foreground: 216 79% 15%;
+    --sidebar-accent: 215 72% 33%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 215 60% 50%;
+    --sidebar-ring: 44 100% 57%;
 
     --font-display: 'Syne', system-ui, sans-serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
@@ -78,9 +78,9 @@
     position: fixed;
     inset: 0;
     background-image:
-      radial-gradient(ellipse at 8% 8%,  hsl(217 92% 64% / 0.18) 0%, transparent 45%),
-      radial-gradient(ellipse at 92% 88%, hsl(45 100% 60% / 0.08) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 50%, hsl(217 80% 40% / 0.10) 0%, transparent 60%);
+      radial-gradient(ellipse at 8% 8%,  hsl(215 75% 55% / 0.40) 0%, transparent 45%),
+      radial-gradient(ellipse at 92% 88%, hsl(216 79% 20% / 0.50) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, hsl(216 79% 28% / 0.20) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
     animation: background-breathe 14s ease-in-out infinite;
