@@ -7,6 +7,7 @@ import { CheckCircle2 } from "lucide-react";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
 import { Star, Shield, Award, ArrowRight, Sparkles, Camera } from "lucide-react";
+import pedraGrande from "@/assets/images/Pedra Grande.jpg";
 
 const services = [
   {
@@ -191,12 +192,11 @@ const Index = () => {
               </div>
 
               {/* === FOTO 3: Pedra Grande === */}
-              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-slow z-18"
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-slow"
                 style={{ width: 186, right: 72, top: 22, transform: 'rotate(5deg)', animationDelay: '2s', zIndex: 18 }}>
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=372&h=248&q=80"
-                  alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 140 }}
-                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#78909C,#37474F)'; (t.parentElement as HTMLElement).style.height='140px'; }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
+                <img src={pedraGrande}
+                  alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 140 }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.45), transparent)' }} />
                 <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Pedra Grande · Atibaia</p>
               </div>
 
