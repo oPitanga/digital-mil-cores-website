@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { CheckCircle2 } from "lucide-react";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
-import { Star, Shield, Award, ArrowRight, Sparkles } from "lucide-react";
+import { Star, Shield, Award, ArrowRight, Sparkles, Camera } from "lucide-react";
 
 const services = [
   {
@@ -40,56 +40,21 @@ const testimonials = [
   { text: "Sensacional! Impressão perfeita! Entrega muito rápida. Minha gratidão em especial ao vendedor Bruno, que me respondia quase instantaneamente e me direcionou em cada passo. Parabéns!", author: "Elisabete J.", stars: 5 },
 ];
 
-/* Impressões fotográficas espalhadas — narrativa da Digital Mil Cores */
-const heroPhotos = [
-  {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=480&h=320&q=80",
-    label: "Paisagem",
-    fallback: "linear-gradient(135deg,#4CAF50,#1A5BB5)",
-    rotate: "-4deg",
-    pos: { left: 0, top: 16 },
-    size: 220,
-    imgH: 148,
-    z: 10,
-    anim: "animate-float-slow",
-    delay: "0s",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=400&h=320&q=80",
-    label: "Família",
-    fallback: "linear-gradient(135deg,#FF6600,#FFD700)",
-    rotate: "3deg",
-    pos: { left: "50%", top: "55%", translateX: "-30%", translateY: "-50%" },
-    size: 205,
-    imgH: 160,
-    z: 30,
-    anim: "animate-float",
-    delay: "0.8s",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=380&h=300&q=80",
-    label: "Crianças",
-    fallback: "linear-gradient(135deg,#E91E8C,#FF3300)",
-    rotate: "5deg",
-    pos: { right: 4, top: 0 },
-    size: 188,
-    imgH: 148,
-    z: 20,
-    anim: "animate-float-delay",
-    delay: "1.4s",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=280&q=80",
-    label: "Pedra Grande · Atibaia",
-    fallback: "linear-gradient(135deg,#78909C,#37474F)",
-    rotate: "-5deg",
-    pos: { right: 0, bottom: 24 },
-    size: 196,
-    imgH: 138,
-    z: 20,
-    anim: "animate-float-slow",
-    delay: "2.2s",
-  },
+/* Frames dos negativos de filme */
+const filmFrames1 = [
+  { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=100&h=75&q=60", fb: "#FF6600" },
+  { src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=100&h=75&q=60", fb: "#E91E8C" },
+  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=100&h=75&q=60", fb: "#4CAF50" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=100&h=75&q=60", fb: "#1A5BB5" },
+  { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=100&h=75&q=60", fb: "#9C27B0" },
+];
+const filmFrames2 = [
+  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=80&h=62&q=60", fb: "#78909C" },
+  { src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=80&h=62&q=60", fb: "#FF3300" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=80&h=62&q=60", fb: "#00BCD4" },
+  { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=80&h=62&q=60", fb: "#FF6600" },
+  { src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=80&h=62&q=60", fb: "#E91E8C" },
+  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=80&h=62&q=60", fb: "#9C27B0" },
 ];
 
 const Index = () => {
@@ -152,50 +117,110 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right: Impressões fotográficas espalhadas */}
-            <div className="relative hidden lg:flex items-center justify-center min-h-[520px] w-full">
+            {/* Right: Collage — negativos + fotos + câmera */}
+            <div className="relative hidden lg:flex items-center justify-center min-h-[520px] w-full overflow-hidden">
 
-              {heroPhotos.map((p) => {
-                const posStyle: React.CSSProperties = { position: 'absolute', zIndex: p.z };
-                if (p.pos.left !== undefined)    posStyle.left  = p.pos.left;
-                if (p.pos.right !== undefined)   posStyle.right = p.pos.right;
-                if (p.pos.top !== undefined)     posStyle.top   = p.pos.top;
-                if (p.pos.bottom !== undefined)  posStyle.bottom = p.pos.bottom;
-                if (typeof p.pos.left === 'string')  posStyle.left  = p.pos.left;
-                if (p.pos.translateX)            posStyle.transform = `rotate(${p.rotate}) translate(${p.pos.translateX ?? '0'}, ${p.pos.translateY ?? '0'})`;
-                else                             posStyle.transform = `rotate(${p.rotate})`;
+              {/* Fundo: paisagem grande semitransparente */}
+              <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&h=520&q=70"
+                  alt=""
+                  className="w-full h-full object-cover"
+                  style={{ opacity: 0.25 }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.opacity = '0'; }}
+                />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0F3D80cc, transparent 60%)' }} />
+              </div>
 
-                return (
-                  <div key={p.label} style={posStyle}>
-                    <div className={`shadow-2xl ${p.anim}`} style={{ width: p.size, animationDelay: p.delay }}>
-                      <div className="bg-white p-2.5 pb-6">
-                        <div className="overflow-hidden" style={{ height: p.imgH }}>
-                          <img
-                            src={p.src}
-                            alt={p.label}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              const img = e.target as HTMLImageElement;
-                              const wrap = img.parentElement!;
-                              img.style.display = 'none';
-                              wrap.style.background = p.fallback;
-                            }}
-                          />
-                        </div>
-                        <p className="text-[8px] text-gray-400 font-mono mt-2 text-center tracking-widest uppercase">
-                          {p.label}
-                        </p>
-                      </div>
-                    </div>
+              {/* === TIRA DE FILME 1 — esquerda, vertical === */}
+              <div className="absolute left-1 top-0 bottom-0 z-20 animate-float-slow" style={{ width: 66, animationDelay: '0s' }}>
+                <div className="h-full flex flex-col" style={{ background: '#111' }}>
+                  <div className="flex justify-between px-1 py-1.5 shrink-0">
+                    {[0,1,2,3].map(i => <div key={i} className="w-2.5 h-1.5 rounded-sm" style={{ background: '#444' }} />)}
                   </div>
-                );
-              })}
+                  {filmFrames1.map((f, i) => (
+                    <div key={i} className="mx-1.5 mb-0.5 shrink-0 overflow-hidden" style={{ height: 50 }}>
+                      <img src={f.src} alt="" className="w-full h-full object-cover"
+                        style={{ filter: 'sepia(0.5)', opacity: 0.85 }}
+                        onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background = f.fb; }} />
+                    </div>
+                  ))}
+                  <div className="flex justify-between px-1 py-1.5 mt-auto shrink-0">
+                    {[0,1,2,3].map(i => <div key={i} className="w-2.5 h-1.5 rounded-sm" style={{ background: '#444' }} />)}
+                  </div>
+                </div>
+              </div>
+
+              {/* === TIRA DE FILME 2 — diagonal direita === */}
+              <div className="absolute z-10 animate-float-delay" style={{ width: 58, right: 48, top: -30, bottom: -30, transform: 'rotate(-12deg)', animationDelay: '1.5s' }}>
+                <div className="h-full flex flex-col" style={{ background: '#0d0d0d' }}>
+                  <div className="flex justify-between px-1 py-1.5 shrink-0">
+                    {[0,1,2].map(i => <div key={i} className="w-2 h-1.5 rounded-sm" style={{ background: '#444' }} />)}
+                  </div>
+                  {filmFrames2.map((f, i) => (
+                    <div key={i} className="mx-1 mb-0.5 shrink-0 overflow-hidden" style={{ height: 46 }}>
+                      <img src={f.src} alt="" className="w-full h-full object-cover"
+                        style={{ filter: 'sepia(0.6)', opacity: 0.8 }}
+                        onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background = f.fb; }} />
+                    </div>
+                  ))}
+                  <div className="flex justify-between px-1 py-1.5 mt-auto shrink-0">
+                    {[0,1,2].map(i => <div key={i} className="w-2 h-1.5 rounded-sm" style={{ background: '#444' }} />)}
+                  </div>
+                </div>
+              </div>
+
+              {/* === FOTO 1: Família === */}
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float z-25"
+                style={{ width: 198, left: 76, top: 38, transform: 'rotate(-3deg)', animationDelay: '0.5s', zIndex: 25 }}>
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=400&h=270&q=80"
+                  alt="Família" className="w-full object-cover" style={{ height: 158 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#FF6600,#FFD700)'; (t.parentElement as HTMLElement).style.height='158px'; }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
+                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Família</p>
+              </div>
+
+              {/* === FOTO 2: Crianças === */}
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-delay z-22"
+                style={{ width: 178, left: 88, bottom: 28, transform: 'rotate(4deg)', animationDelay: '1.2s', zIndex: 22 }}>
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=356&h=240&q=80"
+                  alt="Crianças" className="w-full object-cover" style={{ height: 136 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#E91E8C,#FF3300)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
+                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Crianças</p>
+              </div>
+
+              {/* === FOTO 3: Pedra Grande === */}
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-slow z-18"
+                style={{ width: 186, right: 72, top: 22, transform: 'rotate(5deg)', animationDelay: '2s', zIndex: 18 }}>
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=372&h=248&q=80"
+                  alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 140 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#78909C,#37474F)'; (t.parentElement as HTMLElement).style.height='140px'; }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
+                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Pedra Grande · Atibaia</p>
+              </div>
+
+              {/* === FOTO 4: Paisagem extra === */}
+              <div className="absolute shadow-xl rounded-lg overflow-hidden animate-float z-16"
+                style={{ width: 188, right: 68, bottom: 18, transform: 'rotate(-4deg)', animationDelay: '0.8s', zIndex: 16 }}>
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=376&h=240&q=80"
+                  alt="Paisagem" className="w-full object-cover" style={{ height: 136 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#4CAF50,#1A5BB5)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
+                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Paisagem</p>
+              </div>
+
+              {/* === CÂMERA FLUTUANTE === */}
+              <div className="absolute animate-float-delay z-35"
+                style={{ top: 188, left: 196, zIndex: 35, animationDelay: '2.8s', opacity: 0.9 }}>
+                <Camera className="h-12 w-12" style={{ color: '#FFD700', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))' }} />
+              </div>
 
               {/* Dots coloridos */}
-              <div className="absolute top-6 right-6 z-40 animate-float w-3.5 h-3.5 rounded-full" style={{ background: '#FFD700', animationDelay: "0.8s", opacity: 0.9 }} />
-              <div className="absolute bottom-10 left-2 z-40 animate-float w-3 h-3 rounded-full"   style={{ background: '#E91E8C', animationDelay: "1.8s", opacity: 0.8 }} />
-              <div className="absolute top-1/2 right-0 z-40 animate-float-delay w-2.5 h-2.5 rounded-full" style={{ background: '#00BCD4', animationDelay: "2.5s", opacity: 0.75 }} />
-              <div className="absolute top-28 left-6 z-40 animate-float w-2 h-2 rounded-full"     style={{ background: '#9C27B0', animationDelay: "1.2s", opacity: 0.7 }} />
+              <div className="absolute z-40 animate-float rounded-full" style={{ width: 14, height: 14, top: 24, right: 96, background: '#FFD700', opacity: 0.9, animationDelay: '0.8s' }} />
+              <div className="absolute z-40 animate-float rounded-full" style={{ width: 12, height: 12, bottom: 40, left: 80, background: '#E91E8C', opacity: 0.8, animationDelay: '1.8s' }} />
+              <div className="absolute z-40 animate-float-delay rounded-full" style={{ width: 10, height: 10, top: '50%', right: 110, background: '#00BCD4', opacity: 0.75, animationDelay: '2.5s' }} />
+              <div className="absolute z-40 animate-float rounded-full" style={{ width: 8, height: 8, top: 112, left: 100, background: '#9C27B0', opacity: 0.7, animationDelay: '1.2s' }} />
             </div>
           </div>
         </div>
