@@ -15,8 +15,8 @@ const services = [
   {
     icon: "🖼️",
     title: "Revelação Fotográfica",
-    description: "Cada revelação passa por um processo fotoquímico profissional — o mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.",
-    specs: ["10x15 cm", "15x21 cm", "20x25 cm", "20x30 cm", "E mais", "Super brilho", "Fosco"],
+    description: "Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.",
+    specs: ["Tamanhos variados", "Papel super brilho ou fosco", "Formato Polaroid"],
     priceRange: "R$ 26,90",
     badge: "Especialidade",
     href: "/services/giclee",

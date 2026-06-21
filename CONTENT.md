@@ -62,9 +62,8 @@
 - **Badge:** Especialidade
 - **Ícone:** 🖼️
 - **Título:** Revelação Fotográfica
-- **Descrição:** Cada revelação passa por um processo fotoquímico profissional — o mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.
-- **Tamanhos:** 10x15 cm | 15x21 cm | 20x25 cm | 20x30 cm | E mais
-- **Tipos de papel:** Super brilho | Fosco
+- **Descrição:** Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.
+- **Especificações:** Tamanhos variados | Papel super brilho ou fosco | Formato Polaroid
 - **Preço a partir de:** R$ 26,90
 - **Destaque:** Popular (sim)
 - **Link:** /services/giclee
