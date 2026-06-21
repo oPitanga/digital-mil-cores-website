@@ -1,12 +1,9 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import ProcessTimeline from "@/components/ProcessTimeline";
 import { CheckCircle2 } from "lucide-react";
-import TeamCard from "@/components/TeamCard";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
 import { Star, Shield, Award, ArrowRight, Camera, Sparkles } from "lucide-react";
@@ -32,12 +29,6 @@ const services = [
     href: "/services/restoration",
     popular: false,
   },
-];
-
-const team = [
-  { name: "Carlos Mendes", role: "Diretor de Cor",     bio: "25 anos de experiência em colorimetria e calibração de equipamentos fotográficos profissionais.", initials: "CM" },
-  { name: "Ana Ferreira",  role: "Restauradora Chefe", bio: "Especialista em restauração digital, formada em conservação e restauro pela ECA-USP.", initials: "AF" },
-  { name: "Lucas Alves",   role: "Técnico de Impressão", bio: "Expert em impressão fine art com domínio completo dos perfis ICC e papéis de algodão.", initials: "LA" },
 ];
 
 const testimonials = [
@@ -317,30 +308,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Processo de produção */}
-      <section className="bg-secondary/40 border-y border-border py-24">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="reveal-left">
-              <Badge variant="secondary" className="mb-3 px-4 py-1">Do envio à entrega</Badge>
-              <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-4">
-                Como funciona o processo
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Cada pedido passa por um rigoroso fluxo de produção para garantir que sua impressão chegue
-                exatamente como você imaginou — ou melhor.
-              </p>
-              <Button asChild variant="outline">
-                <Link to="/studio-tour">Ver o laboratório</Link>
-              </Button>
-            </div>
-            <div className="reveal-right">
-              <ProcessTimeline />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Depoimentos */}
       <section className="container py-24">
         <div className="text-center mb-14 reveal">
@@ -366,33 +333,6 @@ const Index = () => {
               <p className="text-xs font-semibold text-primary">— {t.author}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Equipe */}
-      <section className="bg-secondary/40 border-y border-border py-24">
-        <div className="container">
-          <div className="text-center mb-14 reveal">
-            <Badge variant="secondary" className="mb-3 px-4 py-1">Nossa Equipe</Badge>
-            <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
-              Especialistas por trás de cada impressão
-            </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">
-              Cada membro da equipe é apaixonado por fotografia e comprometido com a excelência técnica.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {team.map((member, i) => (
-              <div key={member.name} className={`reveal reveal-delay-${i + 1}`}>
-                <TeamCard {...member} />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Button asChild variant="ghost" className="gap-2">
-              <Link to="/about">Conhecer a equipe completa <ArrowRight className="h-4 w-4" /></Link>
-            </Button>
-          </div>
         </div>
       </section>
 
