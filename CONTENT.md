@@ -128,8 +128,8 @@
 - **Estrelas:** 5
 
 ### CTA Final
-- **Título:** Pronto para preservar suas memórias?
-- **Subtítulo:** Compre pela Shopee, TikTok Shop, ou fale diretamente com a nossa equipe no Instagram e WhatsApp.
+- **Título:** Suas memórias já existem. A gente só precisa revelá-las.
+- **Subtítulo:** Escolha como prefere: Shopee, TikTok Shop, Instagram ou WhatsApp.
 
 ---
 

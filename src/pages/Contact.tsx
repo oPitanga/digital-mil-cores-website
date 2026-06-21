@@ -136,7 +136,7 @@ const ContactPage = () => {
             <div>
               <p className="text-xs text-muted-foreground font-medium">Horário de atendimento</p>
               <p className="text-sm font-semibold text-foreground">Seg–Sex, 9h às 18h</p>
-              <p className="text-xs text-muted-foreground">Sábados, 9h às 13h</p>
+              <p className="text-xs text-muted-foreground">Sábados, das 9h às 13h</p>
             </div>
           </div>
         </div>

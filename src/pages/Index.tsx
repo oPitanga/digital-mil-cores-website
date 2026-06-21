@@ -390,8 +390,8 @@ const Index = () => {
       {/* CTA Social */}
       <section className="container py-24">
         <SocialCTABar
-          heading="Pronto para preservar suas memórias?"
-          subheading="Compre pela Shopee, TikTok Shop, ou fale diretamente com a nossa equipe no Instagram e WhatsApp."
+          heading="Suas memórias já existem. A gente só precisa revelá-las."
+          subheading="Escolha como prefere: Shopee, TikTok Shop, Instagram ou WhatsApp."
         />
       </section>
 
