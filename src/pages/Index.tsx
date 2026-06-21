@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { CheckCircle2 } from "lucide-react";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
-import { Star, Shield, Award, ArrowRight, Camera, Sparkles } from "lucide-react";
+import { Star, Shield, Award, ArrowRight, Sparkles } from "lucide-react";
 
 const services = [
   {
@@ -40,52 +40,55 @@ const testimonials = [
   { text: "Sensacional! Impressão perfeita! Entrega muito rápida. Minha gratidão em especial ao vendedor Bruno, que me respondia quase instantaneamente e me direcionou em cada passo. Parabéns!", author: "Elisabete J.", stars: 5 },
 ];
 
-/* Polaroid person photos — revealed-print aesthetic */
-const personPhotos = [
+/* Impressões fotográficas espalhadas — narrativa da Digital Mil Cores */
+const heroPhotos = [
   {
-    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=220&h=280&q=80",
-    label: "Formatura",
-    rotate: "-rotate-6",
-    pos: "top-4 -left-8",
-    delay: "0.5s",
-    anim: "animate-float",
-    size: "w-28 h-32",
+    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=480&h=320&q=80",
+    label: "Paisagem",
+    fallback: "linear-gradient(135deg,#4CAF50,#1A5BB5)",
+    rotate: "-4deg",
+    pos: { left: 0, top: 16 },
+    size: 220,
+    imgH: 148,
+    z: 10,
+    anim: "animate-float-slow",
+    delay: "0s",
   },
   {
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=220&h=280&q=80",
-    label: "Retrato",
-    rotate: "rotate-8",
-    pos: "-bottom-4 -right-8",
-    delay: "1.2s",
-    anim: "animate-float-delay",
-    size: "w-28 h-32",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=220&h=280&q=80",
-    label: "Casamento",
-    rotate: "-rotate-3",
-    pos: "-bottom-2 left-6",
-    delay: "2s",
-    anim: "animate-float",
-    size: "w-24 h-28",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=220&h=280&q=80",
+    src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=400&h=320&q=80",
     label: "Família",
-    rotate: "rotate-3",
-    pos: "top-2 right-10",
-    delay: "2.8s",
-    anim: "animate-float-delay",
-    size: "w-24 h-28",
+    fallback: "linear-gradient(135deg,#FF6600,#FFD700)",
+    rotate: "3deg",
+    pos: { left: "50%", top: "55%", translateX: "-30%", translateY: "-50%" },
+    size: 205,
+    imgH: 160,
+    z: 30,
+    anim: "animate-float",
+    delay: "0.8s",
   },
   {
-    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=220&h=280&q=80",
-    label: "Aniversário",
-    rotate: "rotate-5",
-    pos: "top-24 -right-6",
-    delay: "1.7s",
-    anim: "animate-float",
-    size: "w-24 h-28",
+    src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=380&h=300&q=80",
+    label: "Crianças",
+    fallback: "linear-gradient(135deg,#E91E8C,#FF3300)",
+    rotate: "5deg",
+    pos: { right: 4, top: 0 },
+    size: 188,
+    imgH: 148,
+    z: 20,
+    anim: "animate-float-delay",
+    delay: "1.4s",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&h=280&q=80",
+    label: "Pedra Grande · Atibaia",
+    fallback: "linear-gradient(135deg,#78909C,#37474F)",
+    rotate: "-5deg",
+    pos: { right: 0, bottom: 24 },
+    size: 196,
+    imgH: 138,
+    z: 20,
+    anim: "animate-float-slow",
+    delay: "2.2s",
   },
 ];
 
@@ -149,92 +152,50 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right: Photography collage */}
-            <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
-              {/* Spinning ring decorations — logo colors */}
-              <div className="absolute w-80 h-80 rounded-full border-2 border-dashed animate-spin-slow" style={{ borderColor: '#E91E8C30' }} />
-              <div className="absolute w-96 h-96 rounded-full border animate-spin-slow" style={{ borderColor: '#00BCD425', animationDirection: "reverse", animationDuration: "20s" }} />
+            {/* Right: Impressões fotográficas espalhadas */}
+            <div className="relative hidden lg:flex items-center justify-center min-h-[520px] w-full">
 
-              {/* Main dark photo frame */}
-              <div className="relative z-10 w-64 h-80 rounded-2xl overflow-hidden shadow-2xl shadow-primary/30 rotate-2 animate-float-slow">
-                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(218,70%,8%)] via-[hsl(218,60%,12%)] to-[hsl(218,70%,6%)]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(45,100%,30%)]/20 via-transparent to-transparent" />
-                {/* Grid of small photos */}
-                <div className="absolute inset-3 grid grid-cols-2 gap-1.5 opacity-90">
-                  <div className="rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1529686342540-1b43aec0df75?auto=format&fit=crop&w=150&h=180&q=75"
-                      alt=""
-                      className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#E91E8C,#FF3300)'; }}
-                    />
-                  </div>
-                  <div className="rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=150&h=180&q=75"
-                      alt=""
-                      className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#00BCD4,#9C27B0)'; }}
-                    />
-                  </div>
-                  <div className="rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=150&h=180&q=75"
-                      alt=""
-                      className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#FF6600,#FFD700)'; }}
-                    />
-                  </div>
-                  <div className="rounded-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&w=150&h=180&q=75"
-                      alt=""
-                      className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#9C27B0,#E91E8C)'; }}
-                    />
-                  </div>
-                </div>
-                {/* Lab badge */}
-                <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-sm rounded-xl p-2.5">
-                  <p className="text-yellow-300 text-[10px] font-mono tracking-widest uppercase">Digital Mil Cores</p>
-                  <p className="text-white/50 text-[9px] font-mono">Lab · São Paulo · Est. 2010</p>
-                </div>
-                <div className="absolute top-3 left-3 bg-white/10 backdrop-blur-sm rounded-lg p-1.5">
-                  <Camera className="h-4 w-4 text-white/70" />
-                </div>
-              </div>
+              {heroPhotos.map((p) => {
+                const posStyle: React.CSSProperties = { position: 'absolute', zIndex: p.z };
+                if (p.pos.left !== undefined)    posStyle.left  = p.pos.left;
+                if (p.pos.right !== undefined)   posStyle.right = p.pos.right;
+                if (p.pos.top !== undefined)     posStyle.top   = p.pos.top;
+                if (p.pos.bottom !== undefined)  posStyle.bottom = p.pos.bottom;
+                if (typeof p.pos.left === 'string')  posStyle.left  = p.pos.left;
+                if (p.pos.translateX)            posStyle.transform = `rotate(${p.rotate}) translate(${p.pos.translateX ?? '0'}, ${p.pos.translateY ?? '0'})`;
+                else                             posStyle.transform = `rotate(${p.rotate})`;
 
-              {/* Person photo polaroids */}
-              {personPhotos.map((p) => (
-                <div
-                  key={p.label}
-                  className={`absolute ${p.pos} z-20 ${p.size} bg-white shadow-xl rounded-md ${p.rotate} overflow-hidden ${p.anim}`}
-                  style={{ animationDelay: p.delay }}
-                >
-                  <div className="w-full" style={{ height: "75%" }}>
-                    <img
-                      src={p.src}
-                      alt={p.label}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const el = e.target as HTMLImageElement;
-                        el.style.display = 'none';
-                        const parent = el.parentElement!;
-                        parent.style.background = 'linear-gradient(135deg, #ddd 0%, #bbb 100%)';
-                      }}
-                    />
+                return (
+                  <div key={p.label} style={posStyle}>
+                    <div className={`shadow-2xl ${p.anim}`} style={{ width: p.size, animationDelay: p.delay }}>
+                      <div className="bg-white p-2.5 pb-6">
+                        <div className="overflow-hidden" style={{ height: p.imgH }}>
+                          <img
+                            src={p.src}
+                            alt={p.label}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const img = e.target as HTMLImageElement;
+                              const wrap = img.parentElement!;
+                              img.style.display = 'none';
+                              wrap.style.background = p.fallback;
+                            }}
+                          />
+                        </div>
+                        <p className="text-[8px] text-gray-400 font-mono mt-2 text-center tracking-widest uppercase">
+                          {p.label}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="px-2 pt-1 text-center">
-                    <p className="text-[9px] text-gray-500 font-mono tracking-tight">{p.label}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
 
-              {/* Dot decorations — logo colors */}
-              <div className="absolute top-8 right-2 z-30 animate-float w-4 h-4 rounded-full" style={{ background: '#FFD700', animationDelay: "0.8s", opacity: 0.85 }} />
-              <div className="absolute bottom-14 left-0 z-30 animate-float w-3 h-3 rounded-full" style={{ background: '#E91E8C', animationDelay: "1.8s", opacity: 0.75 }} />
-              <div className="absolute top-1/2 right-2 z-30 animate-float-delay w-2.5 h-2.5 rounded-full" style={{ background: '#00BCD4', animationDelay: "2.5s", opacity: 0.7 }} />
-              <div className="absolute top-16 left-4 z-30 animate-float w-2 h-2 rounded-full" style={{ background: '#9C27B0', animationDelay: "1.2s", opacity: 0.65 }} />
+              {/* Dots coloridos */}
+              <div className="absolute top-6 right-6 z-40 animate-float w-3.5 h-3.5 rounded-full" style={{ background: '#FFD700', animationDelay: "0.8s", opacity: 0.9 }} />
+              <div className="absolute bottom-10 left-2 z-40 animate-float w-3 h-3 rounded-full"   style={{ background: '#E91E8C', animationDelay: "1.8s", opacity: 0.8 }} />
+              <div className="absolute top-1/2 right-0 z-40 animate-float-delay w-2.5 h-2.5 rounded-full" style={{ background: '#00BCD4', animationDelay: "2.5s", opacity: 0.75 }} />
+              <div className="absolute top-28 left-6 z-40 animate-float w-2 h-2 rounded-full"     style={{ background: '#9C27B0', animationDelay: "1.2s", opacity: 0.7 }} />
             </div>
           </div>
         </div>
