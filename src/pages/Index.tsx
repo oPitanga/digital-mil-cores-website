@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import ServiceCompareCard from "@/components/ServiceCompareCard";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import { CheckCircle2 } from "lucide-react";
 import TeamCard from "@/components/TeamCard";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
@@ -15,7 +15,7 @@ const services = [
   {
     icon: "🖼️",
     title: "Revelação Fotográfica",
-    description: "Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.",
+    description: "Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem mais vivas, os detalhes precisos e o resultado durável por décadas.",
     specs: ["Tamanhos variados", "Papel super brilho ou fosco", "Formato Polaroid"],
     priceRange: "R$ 26,90",
     badge: "Especialidade",
@@ -23,12 +23,12 @@ const services = [
     popular: true,
   },
   {
-    icon: "🖼️",
+    icon: "🎨",
     title: "Restauração Fotográfica",
     description: "Revivemos fotos antigas, danificadas ou desbotadas com retoque digital manual.",
     specs: ["Análise individualizada", "Retoque manual de alta precisão", "Aprovação prévia incluída"],
     priceRange: "R$ 150",
-    badge: "Especialidade",
+    badge: "Exclusivo",
     href: "/services/restoration",
     popular: false,
   },
@@ -260,10 +260,50 @@ const Index = () => {
             seja tão boa quanto o momento que ela guarda.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {services.map((s, i) => (
-            <div key={s.title} className={`reveal reveal-delay-${Math.min(i + 1, 5)}`}>
-              <ServiceCompareCard {...s} />
+            <div
+              key={s.title}
+              className={`reveal reveal-delay-${i + 1} relative flex flex-col sm:flex-row bg-card border ${s.popular ? "border-primary ring-2 ring-primary" : "border-border"} rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}
+            >
+              {s.popular && (
+                <span className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full shadow z-10">
+                  Mais Popular
+                </span>
+              )}
+
+              {/* Painel esquerdo com ícone e preço */}
+              <div className="sm:w-52 flex-shrink-0 flex flex-col items-center justify-center gap-3 p-8 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-b sm:border-b-0 sm:border-r border-border">
+                <span className="text-6xl">{s.icon}</span>
+                {s.badge && (
+                  <Badge variant="secondary" className="text-xs">{s.badge}</Badge>
+                )}
+                <div className="text-center mt-1">
+                  <p className="text-xs text-muted-foreground">A partir de</p>
+                  <p style={{ fontFamily: "var(--font-display)" }} className="text-2xl font-bold text-primary">{s.priceRange}</p>
+                </div>
+              </div>
+
+              {/* Conteúdo direito */}
+              <div className="flex flex-col flex-1 p-7 gap-5">
+                <div>
+                  <h3 style={{ fontFamily: "var(--font-display)" }} className="text-xl font-bold text-foreground mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {s.specs.map((spec, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-foreground/80">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      {spec}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="self-start gap-2 mt-auto">
+                  <Link to={s.href}>Ver detalhes <ArrowRight className="h-4 w-4" /></Link>
+                </Button>
+              </div>
             </div>
           ))}
         </div>

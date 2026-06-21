@@ -62,15 +62,15 @@
 - **Badge:** Especialidade
 - **Ícone:** 🖼️
 - **Título:** Revelação Fotográfica
-- **Descrição:** Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.
+- **Descrição:** Cada revelação passa por um processo fotoquímico profissional. O mesmo princípio que sempre garantiu que as cores fossem mais vivas, os detalhes precisos e o resultado durável por décadas.
 - **Especificações:** Tamanhos variados | Papel super brilho ou fosco | Formato Polaroid
 - **Preço a partir de:** R$ 26,90
 - **Destaque:** Popular (sim)
 - **Link:** /services/giclee
 
 #### Card 2 — Restauração Fotográfica
-- **Badge:** Especialidade
-- **Ícone:** 🖼️
+- **Badge:** Exclusivo
+- **Ícone:** 🎨
 - **Título:** Restauração Fotográfica
 - **Descrição:** Revivemos fotos antigas, danificadas ou desbotadas com retoque digital manual.
 - **Especificações:** Análise individualizada | Retoque manual de alta precisão | Aprovação prévia incluída
