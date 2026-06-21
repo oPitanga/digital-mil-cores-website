@@ -129,7 +129,8 @@ const SiteFooter = () => (
         </div>
       </div>
 
-      <div className="border-t border-border mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div className="mt-12 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg,#E91E8C,#FF3300,#FF6600,#FFD700,#00BCD4,#9C27B0)' }} />
+      <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Digital Mil Cores. Todos os direitos reservados.
         </p>

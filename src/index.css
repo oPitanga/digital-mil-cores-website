@@ -135,23 +135,31 @@
     background-clip: text;
   }
 
-  /* Animated rainbow for "Mil Cores" */
+  /* Animated rainbow for "Mil Cores" — exact logo colors */
   .rainbow-text {
     background: linear-gradient(
       90deg,
-      #ff4d4d 0%,
-      #ff8c00 16%,
-      #ffe100 33%,
-      #4cde80 50%,
-      #4da6ff 66%,
-      #b44dff 83%,
-      #ff4d4d 100%
+      #E91E8C 0%,
+      #FF3300 16%,
+      #FF6600 30%,
+      #FFD700 45%,
+      #00BCD4 62%,
+      #9C27B0 78%,
+      #E91E8C 100%
     );
     background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: rainbow-shift 5s linear infinite;
+  }
+
+  /* Rainbow gradient for decorative use */
+  .brand-rainbow {
+    background: linear-gradient(
+      135deg,
+      #E91E8C, #FF3300, #FF6600, #FFD700, #00BCD4, #9C27B0
+    );
   }
 
   .btn-shimmer {

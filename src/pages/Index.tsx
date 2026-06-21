@@ -98,11 +98,12 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        {/* Animated orbs */}
+        {/* Animated orbs — logo colors */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/12 blur-3xl animate-float-slow" />
-          <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-accent/8 blur-3xl animate-float-delay" />
-          <div className="absolute top-1/3 left-1/4 w-56 h-56 rounded-full bg-[hsl(240,88%,58%)]/8 blur-2xl animate-float-slow" style={{ animationDelay: "2s" }} />
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl animate-float-slow" style={{ background: '#E91E8C18' }} />
+          <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full blur-3xl animate-float-delay" style={{ background: '#00BCD418' }} />
+          <div className="absolute top-1/3 left-1/4 w-56 h-56 rounded-full blur-2xl animate-float-slow" style={{ background: '#9C27B012', animationDelay: "2s" }} />
+          <div className="absolute top-1/2 right-1/4 w-40 h-40 rounded-full blur-2xl animate-float-delay" style={{ background: '#FF660010', animationDelay: "3s" }} />
         </div>
 
         <div className="container relative py-20 md:py-28">
@@ -150,9 +151,9 @@ const Index = () => {
 
             {/* Right: Photography collage */}
             <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
-              {/* Spinning ring decorations */}
-              <div className="absolute w-80 h-80 rounded-full border-2 border-dashed border-primary/20 animate-spin-slow" />
-              <div className="absolute w-96 h-96 rounded-full border border-accent/15 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "20s" }} />
+              {/* Spinning ring decorations — logo colors */}
+              <div className="absolute w-80 h-80 rounded-full border-2 border-dashed animate-spin-slow" style={{ borderColor: '#E91E8C30' }} />
+              <div className="absolute w-96 h-96 rounded-full border animate-spin-slow" style={{ borderColor: '#00BCD425', animationDirection: "reverse", animationDuration: "20s" }} />
 
               {/* Main dark photo frame */}
               <div className="relative z-10 w-64 h-80 rounded-2xl overflow-hidden shadow-2xl shadow-primary/30 rotate-2 animate-float-slow">
@@ -165,7 +166,7 @@ const Index = () => {
                       src="https://images.unsplash.com/photo-1529686342540-1b43aec0df75?auto=format&fit=crop&w=150&h=180&q=75"
                       alt=""
                       className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-rose-400 to-pink-600'; }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#E91E8C,#FF3300)'; }}
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden">
@@ -173,7 +174,7 @@ const Index = () => {
                       src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=150&h=180&q=75"
                       alt=""
                       className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-sky-300 to-blue-500'; }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#00BCD4,#9C27B0)'; }}
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden">
@@ -181,7 +182,7 @@ const Index = () => {
                       src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=150&h=180&q=75"
                       alt=""
                       className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-amber-300 to-orange-500'; }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#FF6600,#FFD700)'; }}
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden">
@@ -189,7 +190,7 @@ const Index = () => {
                       src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&w=150&h=180&q=75"
                       alt=""
                       className="w-full h-full object-cover"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.className += ' bg-gradient-to-br from-violet-300 to-purple-500'; }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(135deg,#9C27B0,#E91E8C)'; }}
                     />
                   </div>
                 </div>
@@ -229,13 +230,11 @@ const Index = () => {
                 </div>
               ))}
 
-              {/* Star decorations */}
-              <div className="absolute top-8 right-2 z-30 animate-float" style={{ animationDelay: "0.8s" }}>
-                <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 opacity-80" />
-              </div>
-              <div className="absolute bottom-14 left-0 z-30 animate-float" style={{ animationDelay: "1.8s" }}>
-                <Star className="h-3.5 w-3.5 text-primary fill-primary opacity-70" />
-              </div>
+              {/* Dot decorations — logo colors */}
+              <div className="absolute top-8 right-2 z-30 animate-float w-4 h-4 rounded-full" style={{ background: '#FFD700', animationDelay: "0.8s", opacity: 0.85 }} />
+              <div className="absolute bottom-14 left-0 z-30 animate-float w-3 h-3 rounded-full" style={{ background: '#E91E8C', animationDelay: "1.8s", opacity: 0.75 }} />
+              <div className="absolute top-1/2 right-2 z-30 animate-float-delay w-2.5 h-2.5 rounded-full" style={{ background: '#00BCD4', animationDelay: "2.5s", opacity: 0.7 }} />
+              <div className="absolute top-16 left-4 z-30 animate-float w-2 h-2 rounded-full" style={{ background: '#9C27B0', animationDelay: "1.2s", opacity: 0.65 }} />
             </div>
           </div>
         </div>
@@ -260,6 +259,9 @@ const Index = () => {
               key={s.title}
               className={`reveal reveal-delay-${i + 1} relative flex flex-col sm:flex-row bg-card border ${s.popular ? "border-primary ring-2 ring-primary" : "border-border"} rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}
             >
+              {/* Faixa rainbow topo */}
+              <div className="absolute inset-x-0 top-0 h-[3px] z-10" style={{ background: 'linear-gradient(90deg,#E91E8C,#FF6600,#FFD700,#00BCD4,#9C27B0)' }} />
+
               {s.popular && (
                 <span className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full shadow z-10">
                   Mais Popular
@@ -315,7 +317,7 @@ const Index = () => {
           <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-5">
             O que os nossos clientes dizem
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Uma foto não é um arquivo. É uma lembrança que você pode segurar. E quando ela é revelada
             com o cuidado que merece — com cor, nitidez e contraste reais — esse momento volta inteiro.
           </p>

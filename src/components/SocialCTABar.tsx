@@ -21,10 +21,13 @@ const SocialCTABar = ({
   className = "",
 }: SocialCTABarProps) => (
   <section className={`relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary/8 via-background to-accent/8 border border-primary/15 p-8 md:p-14 text-center ${className}`}>
+    {/* Faixa rainbow topo */}
+    <div className="absolute inset-x-0 top-0 h-1" style={{ background: 'linear-gradient(90deg,#E91E8C,#FF3300,#FF6600,#FFD700,#00BCD4,#9C27B0)' }} />
+
     {/* Background decoration */}
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-primary/10 blur-3xl" />
-      <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
+      <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl" style={{ background: '#E91E8C12' }} />
+      <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full blur-3xl" style={{ background: '#00BCD412' }} />
     </div>
 
     <div className="relative z-10">
