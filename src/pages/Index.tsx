@@ -345,9 +345,14 @@ const Index = () => {
       <section className="container py-24">
         <div className="text-center mb-14 reveal">
           <Badge variant="secondary" className="mb-3 px-4 py-1">Depoimentos</Badge>
-          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
-            O que nossos clientes dizem
+          <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-5">
+            O que os nossos clientes dizem
           </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Uma foto não é um arquivo. É uma lembrança que você pode segurar. E quando ela é revelada
+            com o cuidado que merece — com cor, nitidez e contraste reais — esse momento volta inteiro.
+          </p>
+          <p className="text-muted-foreground mt-3 font-semibold">É para isso que a gente existe.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (

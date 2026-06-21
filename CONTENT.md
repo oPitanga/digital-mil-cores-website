@@ -10,7 +10,7 @@
 
 ### Marca
 - **Nome:** Digital Mil Cores
-- **Slogan rodapé:** Laboratório fotográfico online especializado em Giclée, restauração e fotolivros. Qualidade arquivística desde 2010.
+- **Slogan rodapé:** Laboratório fotográfico online especializado em revelação fotográfica de alta qualidade. Presente no mercado há mais de 40 anos.
 - **Feito com:** para famílias
 
 ### Redes sociais / Lojas
@@ -21,21 +21,18 @@
 
 ### Navegação principal
 - Serviços (dropdown)
-  - Impressão Giclée → /services/giclee
+  - Revelação Fotográfica → /services/giclee
   - Restauração Fotográfica → /services/restoration
-  - Grande Formato → /services/large-format
-  - Fotolivros → /services/photobook
 - Sobre nós → /about
 - O Laboratório → /studio-tour
 - Preços → /pricing
-- Blog → /knowledge
 - FAQ → /faq
 - Contato → /contact
 
 ### Rodapé — Selos de confiança
-- 🌿 Qualidade Arquivística
+- 🌿 Qualidade de Revelação Fotográfica
 - 🔒 Envio Seguro
-- 💛 Atendimento Humano
+- 💛 Atendimento Humano e Personalizado
 
 ---
 
@@ -116,12 +113,6 @@
 - **Autor:** Elisabete J.
 - **Estrelas:** 5
 
-### Equipe (resumo)
-- **Badge:** Nossa Equipe
-- **Título:** Especialistas por trás de cada impressão
-- **Subtítulo:** Cada membro da equipe é apaixonado por fotografia e comprometido com a excelência técnica.
-- **Link:** Conhecer a equipe completa → /about
-- *(membros listados na página Sobre Nós)*
 
 ### CTA Final
 - **Título:** Pronto para preservar suas memórias?
