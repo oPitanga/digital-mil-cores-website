@@ -78,30 +78,42 @@
 - **Destaque:** Popular (não)
 - **Link:** /services/restoration
 
-### Processo de Produção
-- **Badge:** Do envio à entrega
-- **Título:** Como funciona o processo
-- **Texto:** Cada pedido passa por um rigoroso fluxo de produção para garantir que sua impressão chegue exatamente como você imaginou — ou melhor.
-- **Botão:** Ver o laboratório → /studio-tour
-- **Etapas do processo:** *(ver seção COMPONENTE: ProcessTimeline abaixo)*
-
 ### Depoimentos
 - **Badge:** Depoimentos
-- **Título:** O que nossos clientes dizem
+- **Título:** O que os nossos clientes dizem
+- **Descrição:** Uma foto não é um arquivo. É uma lembrança que você pode segurar. E quando ela é revelada com o cuidado que merece — com cor, nitidez e contraste reais — esse momento volta inteiro.
+
+É para isso que a gente existe.
+
 
 #### Depoimento 1
-- **Texto:** As fotos do meu casamento ficaram perfeitas. A qualidade da impressão Giclée é incomparável.
-- **Autor:** Mariana R.
+- **Texto:** Eu não tenho nem o que falar sobre essa qualidade. Atendimento impecável! Foram entregues ainda antes do prazo, com menos de uma semana desde o pagamento. Fotos de qualidade e sem nenhum defeito. Só elogios!
+- **Autor:** Taitiana P.
 - **Estrelas:** 5
 
 #### Depoimento 2
-- **Texto:** Restauraram fotos dos meus avós que eu achei que estavam perdidas para sempre. Trabalho impecável.
-- **Autor:** João P.
+- **Texto:** As fotos ficaram perfeitas — realmente não é apenas aquele papel de foto impresso, a qualidade é perfeita assim como eram as de antigamente!
+- **Autor:** Vitoria O.
 - **Estrelas:** 5
 
 #### Depoimento 3
-- **Texto:** Atendimento rápido e resultado profissional. Já fiz três pedidos e sempre superou as expectativas.
-- **Autor:** Fernanda S.
+- **Texto:** Ficaram perfeitas, com cores vivas e bastante nitidez. Recomendo a todos, pois nas lojas cobram os olhos da cara para revelar fotos. Vendedor muito atencioso — assim que efetuei a compra ele logo me chamou para enviar as fotos.
+- **Autor:** Cristiane B.
+- **Estrelas:** 5
+
+#### Depoimento 4
+- **Texto:** Meu Deus que lindo, amei! Material de primeira, chegou super rápido, pessoal muito atencioso — e com certeza terei outras compras, pois amo revelar minhas lembranças.
+- **Autor:** Cicera S.
+- **Estrelas:** 5
+
+#### Depoimento 5
+- **Texto:** Sempre revelo minhas fotos nessa loja, boa qualidade, envio rápido e bom atendimento. Acredito que já foram mais de 500 fotos!
+- **Autor:** Araujo C.
+- **Estrelas:** 5
+
+#### Depoimento 6
+- **Texto:** Sensacional! Impressão perfeita! Entrega muito rápida. Minha gratidão em especial ao vendedor Bruno, que me respondia quase instantaneamente e me direcionou em cada passo. Parabéns!
+- **Autor:** Elisabete J.
 - **Estrelas:** 5
 
 ### Equipe (resumo)

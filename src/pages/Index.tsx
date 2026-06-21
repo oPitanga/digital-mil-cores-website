@@ -41,9 +41,12 @@ const team = [
 ];
 
 const testimonials = [
-  { text: "As fotos do meu casamento ficaram perfeitas. A qualidade da impressão Giclée é incomparável.", author: "Mariana R.", stars: 5 },
-  { text: "Restauraram fotos dos meus avós que eu achei que estavam perdidas para sempre. Trabalho impecável.", author: "João P.", stars: 5 },
-  { text: "Atendimento rápido e resultado profissional. Já fiz três pedidos e sempre superou as expectativas.", author: "Fernanda S.", stars: 5 },
+  { text: "Eu não tenho nem o que falar sobre essa qualidade. Atendimento impecável! Foram entregues ainda antes do prazo, com menos de uma semana desde o pagamento. Fotos de qualidade e sem nenhum defeito. Só elogios!", author: "Taitiana P.", stars: 5 },
+  { text: "As fotos ficaram perfeitas — realmente não é apenas aquele papel de foto impresso, a qualidade é perfeita assim como eram as de antigamente!", author: "Vitoria O.", stars: 5 },
+  { text: "Ficaram perfeitas, com cores vivas e bastante nitidez. Recomendo a todos, pois nas lojas cobram os olhos da cara para revelar fotos. Vendedor muito atencioso — assim que efetuei a compra ele logo me chamou para enviar as fotos.", author: "Cristiane B.", stars: 5 },
+  { text: "Meu Deus que lindo, amei! Material de primeira, chegou super rápido, pessoal muito atencioso — e com certeza terei outras compras, pois amo revelar minhas lembranças.", author: "Cicera S.", stars: 5 },
+  { text: "Sempre revelo minhas fotos nessa loja, boa qualidade, envio rápido e bom atendimento. Acredito que já foram mais de 500 fotos!", author: "Araujo C.", stars: 5 },
+  { text: "Sensacional! Impressão perfeita! Entrega muito rápida. Minha gratidão em especial ao vendedor Bruno, que me respondia quase instantaneamente e me direcionou em cada passo. Parabéns!", author: "Elisabete J.", stars: 5 },
 ];
 
 /* Polaroid person photos — revealed-print aesthetic */
@@ -348,7 +351,7 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1} bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}>
+            <div key={i} className={`reveal reveal-delay-${Math.min(i + 1, 5)} bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300`}>
               <div className="flex gap-0.5 mb-3">
                 {Array.from({ length: t.stars }).map((_, j) => (
                   <Star key={j} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
