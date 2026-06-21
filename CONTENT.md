@@ -85,6 +85,10 @@
 - **Destaque:** Popular (não)
 - **Link:** /services/restoration
 
+### Faixa Destaque (entre serviços e depoimentos)
+- **Texto:** Loja mais bem avaliada da Shopee ⭐⭐⭐⭐⭐
+- **Estilo:** faixa laranja Shopee com texto correndo (marquee)
+
 ### Depoimentos
 - **Badge:** Depoimentos
 - **Título:** O que os nossos clientes dizem

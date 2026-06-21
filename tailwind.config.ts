@@ -97,6 +97,10 @@ export default {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
+        "marquee": {
+          "0%":   { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.15s ease-out",
@@ -107,6 +111,7 @@ export default {
         "glow-pulse": "glow-pulse 2.5s ease-in-out infinite",
         "gradient-shift": "gradient-shift 6s ease infinite",
         "spin-slow": "spin-slow 12s linear infinite",
+        "marquee": "marquee 22s linear infinite",
       },
     },
   },
