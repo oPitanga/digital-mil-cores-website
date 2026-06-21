@@ -13,12 +13,12 @@ import { Star, Shield, Award, ArrowRight, Camera, Sparkles } from "lucide-react"
 
 const services = [
   {
-    icon: "🎨",
-    title: "Impressão Giclée",
-    description: "A mais alta fidelidade cromática para arte e fotografia com durabilidade de 100+ anos.",
-    specs: ["2400 dpi", "Tintas arquivísticas", "Papel cotton ou canvas", "Até 1,5 m de largura"],
-    priceRange: "R$ 89",
-    badge: "Fine Art",
+    icon: "🖼️",
+    title: "Revelação Fotográfica",
+    description: "Cada revelação passa por um processo fotoquímico profissional — o mesmo princípio que sempre garantiu que as cores fossem vivas, os detalhes precisos e o resultado durável por décadas.",
+    specs: ["10x15 cm", "15x21 cm", "20x25 cm", "20x30 cm", "E mais", "Super brilho", "Fosco"],
+    priceRange: "R$ 26,90",
+    badge: "Especialidade",
     href: "/services/giclee",
     popular: true,
   },
@@ -26,29 +26,10 @@ const services = [
     icon: "🖼️",
     title: "Restauração Fotográfica",
     description: "Revivemos fotos antigas, danificadas ou desbotadas com retoque digital manual.",
-    specs: ["Análise individualizada", "Retoque manual de alta precisão", "Entrega em TIFF + JPEG", "Aprovação prévia incluída"],
+    specs: ["Análise individualizada", "Retoque manual de alta precisão", "Aprovação prévia incluída"],
     priceRange: "R$ 150",
     badge: "Especialidade",
     href: "/services/restoration",
-    popular: false,
-  },
-  {
-    icon: "📐",
-    title: "Grande Formato",
-    description: "Impressões de grande porte para exposições, eventos e decoração corporativa.",
-    specs: ["1440 dpi", "Até 1,5 m de largura", "Papel fosco ou brilhante", "Acabamento em lona ou papel"],
-    priceRange: "R$ 120",
-    href: "/services/large-format",
-    popular: false,
-  },
-  {
-    icon: "📚",
-    title: "Fotolivros",
-    description: "Fotolivros premium com encadernação lay-flat e papel fotográfico de alto brilho.",
-    specs: ["Encadernação lay-flat", "Papel 300g Premium", "Até 100 páginas", "Capa dura personalizada"],
-    priceRange: "R$ 249",
-    badge: "Premium",
-    href: "/services/photobook",
     popular: false,
   },
 ];
@@ -140,36 +121,35 @@ const Index = () => {
                 className="mb-6 border-primary/40 font-semibold gap-1.5 px-4 py-1.5 text-xs tracking-wide text-primary"
               >
                 <Sparkles className="h-3 w-3" />
-                Laboratório Fotográfico Online · São Paulo
+                Laboratório Fotográfico Online
               </Badge>
 
               <h1
                 style={{ fontFamily: "var(--font-display)" }}
                 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6"
               >
-                Memórias que duram{" "}
-                <span className="text-gradient">gerações</span>
+                Suas <span className="text-gradient">memórias</span> merecem durar para sempre
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-                Impressão Giclée de alta fidelidade, restauração fotográfica e fotolivros premium.
-                Qualidade arquivística com durabilidade de 100+ anos.
+                Há mais de 40 anos revelamos momentos. Do filme ao digital, o que não mudou é o cuidado
+                com cada foto que passa pelas nossas mãos.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <Button asChild size="lg" className="gap-2 text-base px-8">
                   <Link to="/pricing">
-                    Ver preços <ArrowRight className="h-4 w-4" />
+                    Ver serviços <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="gap-2 text-base px-8">
-                  <Link to="/about">Conheça o laboratório</Link>
+                  <Link to="/about">Fale conosco</Link>
                 </Button>
               </div>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-10 text-sm text-muted-foreground font-medium">
-                <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-primary" /> Tintas arquivísticas</span>
-                <span className="flex items-center gap-1.5"><Award className="h-4 w-4 text-primary" /> 15 anos de experiência</span>
+                <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-primary" /> Revelação Fotográfica</span>
+                <span className="flex items-center gap-1.5"><Award className="h-4 w-4 text-primary" /> 40 anos de experiência</span>
                 <span className="flex items-center gap-1.5"><Star className="h-4 w-4 text-yellow-400 fill-yellow-400" /> 4,9 / 5 estrelas</span>
               </div>
             </div>
@@ -272,13 +252,15 @@ const Index = () => {
         <div className="text-center mb-14 reveal">
           <Badge variant="secondary" className="mb-3 px-4 py-1">Nossos Serviços</Badge>
           <h2 style={{ fontFamily: "var(--font-display)" }} className="text-3xl md:text-4xl font-bold mb-3">
-            Qualidade para cada necessidade
+            A melhor qualidade ainda passa pela química
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Do fine art à restauração — soluções profissionais de impressão fotográfica para artistas, famílias e empresas.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            No mundo digital, a maioria das impressões vai direto do arquivo para o papel. Na Digital Mil Cores, não.
+            Tecnologia digital na captura. Processo analógico na entrega. O melhor dos dois mundos, para que sua foto
+            seja tão boa quanto o momento que ela guarda.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {services.map((s, i) => (
             <div key={s.title} className={`reveal reveal-delay-${Math.min(i + 1, 5)}`}>
               <ServiceCompareCard {...s} />
