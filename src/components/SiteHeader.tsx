@@ -3,19 +3,16 @@ import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const services = [
-  { to: "/services/giclee",       label: "Impressão Giclée" },
-  { to: "/services/restoration",  label: "Restauração Fotográfica" },
-  { to: "/services/large-format", label: "Grande Formato" },
-  { to: "/services/photobook",    label: "Fotolivros" },
+  { to: "/services/giclee",      label: "Revelação Fotográfica" },
+  { to: "/services/restoration", label: "Restauração" },
 ];
 
 const links = [
-  { to: "/about",     label: "Sobre nós" },
+  { to: "/about",       label: "Sobre nós" },
   { to: "/studio-tour", label: "O Laboratório" },
-  { to: "/pricing",   label: "Preços" },
-  { to: "/knowledge", label: "Blog" },
-  { to: "/faq",       label: "FAQ" },
-  { to: "/contact",   label: "Contato" },
+  { to: "/pricing",     label: "Preços" },
+  { to: "/faq",         label: "FAQ" },
+  { to: "/contact",     label: "Contato" },
 ];
 
 const SiteHeader = () => {

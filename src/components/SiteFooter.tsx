@@ -16,8 +16,8 @@ const SiteFooter = () => (
             </p>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-            Laboratório fotográfico online especializado em Giclée, restauração e fotolivros.
-            Qualidade arquivística desde 2010.
+            Laboratório fotográfico online especializado em revelação fotográfica de alta qualidade.
+            Presente no mercado há mais de 40 anos.
           </p>
           <div className="flex items-center gap-3 mt-5">
             <a href="https://shopee.com.br/digitalmilcores" target="_blank" rel="noopener noreferrer"
@@ -51,11 +51,9 @@ const SiteFooter = () => (
           </p>
           <ul className="space-y-2 text-sm">
             {[
-              { to: "/services/giclee", label: "Impressão Giclée" },
-              { to: "/services/restoration", label: "Restauração Fotográfica" },
-              { to: "/services/large-format", label: "Grande Formato" },
-              { to: "/services/photobook", label: "Fotolivros" },
-              { to: "/pricing", label: "Tabela de Preços" },
+              { to: "/services/giclee",      label: "Revelação Fotográfica" },
+              { to: "/services/restoration", label: "Restauração" },
+              { to: "/pricing",              label: "Tabela de Preços" },
             ].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -73,11 +71,10 @@ const SiteFooter = () => (
           </p>
           <ul className="space-y-2 text-sm">
             {[
-              { to: "/about", label: "Sobre nós" },
+              { to: "/about",       label: "Sobre nós" },
               { to: "/studio-tour", label: "O Laboratório" },
-              { to: "/knowledge", label: "Blog" },
-              { to: "/faq", label: "FAQ" },
-              { to: "/contact", label: "Contato" },
+              { to: "/faq",         label: "FAQ" },
+              { to: "/contact",     label: "Contato" },
             ].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -137,7 +134,7 @@ const SiteFooter = () => (
           © {new Date().getFullYear()} Digital Mil Cores. Todos os direitos reservados.
         </p>
         <div className="flex gap-3 flex-wrap justify-center">
-          {["🌿 Qualidade Arquivística", "🔒 Envio Seguro", "💛 Atendimento Humano"].map((badge) => (
+          {["🌿 Qualidade de Revelação Fotográfica", "🔒 Envio Seguro", "💛 Atendimento Humano e Personalizado"].map((badge) => (
             <span key={badge} className="text-xs bg-secondary rounded-full px-3 py-1 text-foreground/70 font-semibold">
               {badge}
             </span>

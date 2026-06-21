@@ -22,7 +22,7 @@
 ### Navegação principal
 - Serviços (dropdown)
   - Revelação Fotográfica → /services/giclee
-  - Restauração Fotográfica → /services/restoration
+  - Restauração → /services/restoration
 - Sobre nós → /about
 - O Laboratório → /studio-tour
 - Preços → /pricing
@@ -400,20 +400,8 @@
 - **CTA:** Iniciar conversa
 
 ### Informações Adicionais
-- **Localização:** São Paulo, SP · Brasil
-- **Horário:** Seg–Sex, 9h às 18h
-
----
-
-## COMPONENTE: ProcessTimeline (usado em Home e Sobre)
-
-### Etapas do processo
-1. **Envio do Arquivo** — Upload de alta resolução com guia de preparo incluído.
-2. **Análise de Cor** — Calibração com perfis ICC para fidelidade cromática máxima.
-3. **Impressão** — Impressão Giclée em impressoras de 12 canais com tintas arquivísticas.
-4. **Controle de Qualidade** — Inspeção visual e densitométrica antes de embalar.
-5. **Embalagem Segura** — Embalagem rígida anti-umidade, pronta para transporte.
-6. **Entrega** — Envio para todo o Brasil com rastreamento em tempo real.
+- **Localização:** Rua Benedito de Almeida Bueno, 134, Centro, Atibaia – SP
+- **Horário:** Seg–Sex, 9h às 18h e Sábados, das 9h às 13h
 
 ---
 
