@@ -186,8 +186,6 @@ const Index = () => {
                 <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=400&h=270&q=80"
                   alt="Família" className="w-full object-cover" style={{ height: 158 }}
                   onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#FF6600,#FFD700)'; (t.parentElement as HTMLElement).style.height='158px'; }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
-                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Família</p>
               </div>
 
               {/* === FOTO 2: Crianças === */}
@@ -196,8 +194,6 @@ const Index = () => {
                 <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=356&h=240&q=80"
                   alt="Crianças" className="w-full object-cover" style={{ height: 136 }}
                   onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#E91E8C,#FF3300)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
-                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Crianças</p>
               </div>
 
               {/* === FOTO 3: Pedra Grande === */}
@@ -205,8 +201,6 @@ const Index = () => {
                 style={{ width: 186, right: 72, top: 22, transform: 'rotate(5deg)', animationDelay: '2s', zIndex: 18 }}>
                 <img src={pedraGrande}
                   alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 140 }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.45), transparent)' }} />
-                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Pedra Grande · Atibaia</p>
               </div>
 
               {/* === FOTO 4: Paisagem extra === */}
@@ -215,8 +209,6 @@ const Index = () => {
                 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=376&h=240&q=80"
                   alt="Paisagem" className="w-full object-cover" style={{ height: 136 }}
                   onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#4CAF50,#1A5BB5)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }} />
-                <p className="absolute bottom-2 inset-x-0 text-center font-mono tracking-widest uppercase text-white/80" style={{ fontSize: 8 }}>Paisagem</p>
               </div>
 
               {/* === CÂMERA FLUTUANTE === */}
