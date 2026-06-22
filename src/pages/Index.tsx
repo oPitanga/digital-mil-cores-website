@@ -128,7 +128,7 @@ const Index = () => {
             </div>
 
             {/* Right: Collage — negativos + fotos + câmera */}
-            <div className="relative hidden lg:flex items-center justify-center min-h-[520px] w-full overflow-hidden">
+            <div className="relative hidden lg:flex items-center justify-center min-h-[600px] w-full overflow-hidden">
 
               {/* Fundo: paisagem grande semitransparente */}
               <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden">
@@ -181,34 +181,34 @@ const Index = () => {
               </div>
 
               {/* === FOTO 1: Família === */}
-              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float z-25"
-                style={{ width: 198, left: 76, top: 38, transform: 'rotate(-3deg)', animationDelay: '0.5s', zIndex: 25 }}>
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=400&h=270&q=80"
-                  alt="Família" className="w-full object-cover" style={{ height: 158 }}
-                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#FF6600,#FFD700)'; (t.parentElement as HTMLElement).style.height='158px'; }} />
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float"
+                style={{ width: 265, left: 60, top: 30, transform: 'rotate(-3deg)', animationDelay: '0.5s', zIndex: 25 }}>
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=530&h=360&q=80"
+                  alt="Família" className="w-full object-cover" style={{ height: 210 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#FF6600,#FFD700)'; (t.parentElement as HTMLElement).style.height='210px'; }} />
               </div>
 
               {/* === FOTO 2: Crianças === */}
-              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-delay z-22"
-                style={{ width: 178, left: 88, bottom: 28, transform: 'rotate(4deg)', animationDelay: '1.2s', zIndex: 22 }}>
-                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=356&h=240&q=80"
-                  alt="Crianças" className="w-full object-cover" style={{ height: 136 }}
-                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#E91E8C,#FF3300)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
+              <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-delay"
+                style={{ width: 240, left: 72, bottom: 20, transform: 'rotate(4deg)', animationDelay: '1.2s', zIndex: 22 }}>
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=480&h=320&q=80"
+                  alt="Crianças" className="w-full object-cover" style={{ height: 182 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#E91E8C,#FF3300)'; (t.parentElement as HTMLElement).style.height='182px'; }} />
               </div>
 
               {/* === FOTO 3: Pedra Grande === */}
               <div className="absolute shadow-2xl rounded-lg overflow-hidden animate-float-slow"
-                style={{ width: 186, right: 72, top: 22, transform: 'rotate(5deg)', animationDelay: '2s', zIndex: 18 }}>
+                style={{ width: 252, right: 56, top: 16, transform: 'rotate(5deg)', animationDelay: '2s', zIndex: 18 }}>
                 <img src={pedraGrande}
-                  alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 140 }} />
+                  alt="Pedra Grande · Atibaia" className="w-full object-cover" style={{ height: 188 }} />
               </div>
 
               {/* === FOTO 4: Paisagem extra === */}
-              <div className="absolute shadow-xl rounded-lg overflow-hidden animate-float z-16"
-                style={{ width: 188, right: 68, bottom: 18, transform: 'rotate(-4deg)', animationDelay: '0.8s', zIndex: 16 }}>
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=376&h=240&q=80"
-                  alt="Paisagem" className="w-full object-cover" style={{ height: 136 }}
-                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#4CAF50,#1A5BB5)'; (t.parentElement as HTMLElement).style.height='136px'; }} />
+              <div className="absolute shadow-xl rounded-lg overflow-hidden animate-float"
+                style={{ width: 252, right: 52, bottom: 12, transform: 'rotate(-4deg)', animationDelay: '0.8s', zIndex: 16 }}>
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=504&h=320&q=80"
+                  alt="Paisagem" className="w-full object-cover" style={{ height: 182 }}
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#4CAF50,#1A5BB5)'; (t.parentElement as HTMLElement).style.height='182px'; }} />
               </div>
 
               {/* === CÂMERA FLUTUANTE === */}
