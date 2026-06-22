@@ -7,7 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { CheckCircle2 } from "lucide-react";
 import SocialCTABar from "@/components/SocialCTABar";
 import { useRevealOnScroll } from "@/hooks/use-intersection";
-import { Star, Shield, Award, ArrowRight, Sparkles, Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Shield, Award, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import pedraGrande from "@/assets/images/Pedra Grande.jpg";
 
 const services = [
@@ -209,12 +209,6 @@ const Index = () => {
                 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=504&h=320&q=80"
                   alt="Paisagem" className="w-full object-cover" style={{ height: 182 }}
                   onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; t.parentElement!.style.background='linear-gradient(135deg,#4CAF50,#1A5BB5)'; (t.parentElement as HTMLElement).style.height='182px'; }} />
-              </div>
-
-              {/* === CÂMERA FLUTUANTE === */}
-              <div className="absolute animate-float-delay z-35"
-                style={{ top: 188, left: 196, zIndex: 35, animationDelay: '2.8s', opacity: 0.9 }}>
-                <Camera className="h-12 w-12" style={{ color: '#FFD700', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))' }} />
               </div>
 
               {/* Dots coloridos */}
